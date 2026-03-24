@@ -7,10 +7,10 @@ export default function Header() {
       <header className="flex flex-row justify-between p-4 max-w-7xl mx-auto w-full">
         {/* Logo / Name */}
         <div className="text-xl font-semibold flex overflow-hidden rounded-lg">
-          <span className="bg-blue-600 text-white px-2 py-0.5 text-sm flex items-center">
+          <span className="bg-blue-400 text-white px-2 py-0.5 text-sm flex items-center">
             J · B
           </span>
-          <span className="bg-blue-300 text-blue-900 px-2 py-0.5 text-sm flex items-center">
+          <span className="bg-blue-100 text-blue-900 px-2 py-0.5 text-sm flex items-center">
             Portfolio
           </span>
         </div>

@@ -3,9 +3,39 @@
 import Link from "next/link";
 
 export default function HeroSection() {
+  const languages = [
+    { name: "JavaScript", top: "10%", left: "5%", size: "2rem" },
+    { name: "Python", top: "15%", left: "70%", size: "1.8rem" },
+    { name: "Java", top: "40%", left: "20%", size: "2rem" },
+    { name: "C++", top: "60%", left: "60%", size: "1.5rem" },
+    { name: "Go", top: "30%", left: "40%", size: "1.7rem" },
+    { name: "Swift", top: "50%", left: "10%", size: "1.6rem" },
+    { name: "Kotlin", top: "70%", left: "50%", size: "2rem" },
+  ];
+
   return (
-    <div className="w-full bg-sky-50 relative">
-      <section className="max-w-7xl w-full m-auto py-20 px-6 relative">
+    <div className="w-full bg-sky-50 relative relative ">
+      {languages.map((lang, index) => (
+        <span
+          key={index}
+          style={{
+            position: "absolute",
+            top: lang.top,
+            left: lang.left,
+            fontSize: lang.size,
+            transform: "translate(-50%, -50%) rotate(0deg)", // centers the text
+            opacity: 0.3, // visible but subtle
+            pointerEvents: "none",
+            whiteSpace: "nowrap",
+            zIndex: 1,
+          }}
+          className="text-gray-400 select-none z-0"
+        >
+          {lang.name}
+        </span>
+      ))}
+
+      <section className="max-w-7xl w-full m-auto py-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           {/* Heading */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">
