@@ -1,0 +1,94 @@
+import { Briefcase, Award } from "lucide-react";
+
+export default function ExperienceAndAchievements() {
+  const workExperience = [
+    {
+      title: "Student Trainee",
+      company: "Alliance Software Inc.",
+      month: "Feb 2024 - Jun 2024",
+    },
+    {
+      title: "Intern | Full Stack Developer",
+      company: "Fullscale Inc.",
+      month: "Feb 2025 - Jun 2025",
+    },
+    {
+      title: "Full Stack Developer",
+      company: "BridgeCulture Inc.",
+      month: "Feb 2023 - Feb 2026",
+    },
+  ];
+
+  const certifications = [
+    {
+      title: "IT Passport Passer",
+      issuer: "Philnits",
+      month: "2024",
+    },
+    {
+      title: "Certificate of Completion",
+      issuer: "Alliance Software Inc.",
+      month: "Dec 2024",
+    },
+  ];
+
+  return (
+    <section className="bg-sky-50 mt-10 w-full py-16 px-6">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Experience & Achievements
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Left Column: Work Experience */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold mb-4">Work Experience</h3>
+            {workExperience.map((work, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-md"
+              >
+                <div className="w-12 h-12 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center">
+                  <Briefcase size={24} />
+                </div>
+
+                <div>
+                  <p className="text-xs text-gray-400">{work.month}</p>
+                  <h4 className="text-lg font-semibold text-gray-800">
+                    {work.title}
+                  </h4>
+                  <p className="text-sm text-gray-500">{work.company}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column: Certifications & Achievements */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold mb-4">
+              Certifications & Achievements
+            </h3>
+            {certifications.map((cert, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-md"
+              >
+                <div className="w-12 h-12 bg-yellow-100 text-yellow-500 rounded-lg flex items-center justify-center">
+                  <Award size={24} />
+                </div>
+
+                <div>
+                  <p className="text-xs text-gray-400">{cert.month}</p>
+                  <h4 className="text-lg font-semibold text-gray-800">
+                    {cert.title}
+                  </h4>
+                  <p className="text-sm text-gray-500">{cert.issuer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

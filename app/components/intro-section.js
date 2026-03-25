@@ -21,9 +21,16 @@ export default function IntroSection() {
 
         {/* Right: Intro Text */}
         <div className="w-full md:w-1/2">
-          {/* Experience Badge */}
-          <div className="inline-block bg-blue-100 text-blue-600 font-semibold px-4 py-2 rounded-full mb-4">
-            +3 Years Experience
+          {/* Experience + Open for Work */}
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="inline-block bg-blue-100 text-blue-600 font-semibold px-4 py-2 rounded-full">
+              +3 Years Experience
+            </div>
+
+            <div className="inline-flex items-center bg-green-100 text-green-600 font-semibold px-4 py-2 rounded-full">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              Open for Work
+            </div>
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
