@@ -102,7 +102,7 @@ export default function TechStackSection() {
       years: "3 yrs",
     },
     {
-      name: "Git & GitHub",
+      name: "GitHub",
       category: "Tools",
       logo: "/images/logo-github.png",
       years: "3 yrs",
