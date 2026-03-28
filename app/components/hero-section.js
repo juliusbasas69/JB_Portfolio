@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HeroSection() {
   const languages = [
     { name: "JavaScript", top: "10%", left: "5%", size: "2rem" },
     { name: "Python", top: "15%", left: "70%", size: "1.8rem" },
-    { name: "Java", top: "40%", left: "20%", size: "2rem" },
-    { name: "C++", top: "60%", left: "60%", size: "1.5rem" },
+    { name: "Java", top: "40%", left: "80%", size: "2rem" },
+    { name: "C++", top: "60%", left: "85%", size: "1.5rem" },
     { name: "Go", top: "30%", left: "40%", size: "1.7rem" },
     { name: "Swift", top: "50%", left: "10%", size: "1.6rem" },
-    { name: "Kotlin", top: "70%", left: "50%", size: "2rem" },
+    { name: "Kotlin", top: "80%", left: "75%", size: "2rem" },
   ];
 
   return (
@@ -64,12 +65,21 @@ export default function HeroSection() {
               Contact Me
             </Link>
           </div>
+          <div className="relative">
+            <Image
+              src="/images/welcome-robot.png"
+              alt="Robot"
+              width={256}
+              height={256}
+              className="absolute -bottom-30 -left-12 w-8 h-88 md:w-60 lg:w-80 z-0 pointer-events-none"
+            />
+          </div>
         </div>
-
         {/* Floating Bottom Cards */}
         <div
-          className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 
-                inline-flex gap-6 bg-white shadow-xl rounded-2xl px-8 py-5"
+          className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
+             flex flex-wrap justify-center gap-4 bg-white shadow-xl rounded-2xl
+             px-4 py-3 md:px-8 md:py-5 w-fit max-w-[75%]"
         >
           {/* Web Dev */}
           <div className="flex items-center gap-3">
