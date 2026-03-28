@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ProjectsSection() {
   const projects = [
     {
-      name: "E-Commerce Website",
+      name: "JB Portfolio",
       description:
         "An online store built with React, Next.js, and TailwindCSS.",
       tech: "React.js, Next.js, TailwindCSS, Firebase",
@@ -43,7 +43,7 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <section className="w-full py-12 px-6 bg-gray-50">
+    <section className="w-full py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
           My Projects

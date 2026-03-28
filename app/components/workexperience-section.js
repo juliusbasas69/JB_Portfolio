@@ -33,7 +33,7 @@ export default function ExperienceAndAchievements() {
   ];
 
   return (
-    <section className="bg-sky-50 mt-10 w-full py-16 px-6">
+    <section className="mt-10 w-full py-16 px-6 bg-gradient-to-r from-white to-[#F0F9FF]">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12">
           Experience & Achievements

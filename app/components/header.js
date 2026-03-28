@@ -10,8 +10,12 @@ export default function Header() {
           <span className="bg-blue-400 text-white px-2 py-0.5 text-sm flex items-center">
             J · B
           </span>
-          <span className="bg-blue-100 text-blue-900 px-2 py-0.5 text-sm flex items-center">
+
+          <span className="bg-blue-100 text-blue-900 px-2 py-0.5 text-sm flex items-center gap-2">
             Portfolio
+            <span className="bg-yellow-200 text-yellow-900 text-[10px] px-1.5 py-0.5 rounded-full font-medium">
+              Ongoing
+            </span>
           </span>
         </div>
 

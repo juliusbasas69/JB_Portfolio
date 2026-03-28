@@ -28,7 +28,6 @@ export default function TechStackSection() {
       name: "React.js",
       category: "Frontend",
       logo: "/images/logo-reactjs.png",
-      years: "2 yrs",
     },
     {
       name: "Next.js",
@@ -40,52 +39,52 @@ export default function TechStackSection() {
       name: "TailwindCSS",
       category: "Frontend",
       logo: "/images/logo-tailwindcss.png",
-      years: "2 yrs",
+      years: "1 yr",
     },
 
     {
       name: "ASP.NET",
       category: "Backend",
       logo: "/images/logo-aspnet.png",
-      years: "2 yrs",
+      years: "1 yr",
     },
     {
       name: "Spring Boot",
       category: "Backend",
       logo: "/images/logo-springboot.png",
-      years: "1 yr",
+      years: "3 yrs",
     },
     {
       name: "Thymeleaf",
       category: "Backend",
       logo: "/images/logo-thymeleaf.png",
-      years: "1 yr",
+      years: "3 yrs",
     },
 
     {
       name: "C#",
       category: "Language",
       logo: "/images/logo-csharp.png",
-      years: "2 yrs",
+      years: "1 yr",
     },
     {
       name: "Java",
       category: "Language",
       logo: "/images/logo-java.png",
-      years: "2 yrs",
+      years: "3 yrs",
     },
 
     {
       name: "PostgreSQL",
       category: "Database",
       logo: "/images/logo-postgresql.png",
-      years: "2 yrs",
+      years: "3 yrs",
     },
     {
       name: "MySQL",
       category: "Database",
       logo: "/images/logo-mysql.png",
-      years: "2 yrs",
+      years: "1 yr",
     },
 
     {
@@ -111,43 +110,42 @@ export default function TechStackSection() {
       name: "Tortoise Git",
       category: "Tools",
       logo: "/images/logo-tortoisegit.png",
-      years: "2 yrs",
+      years: "3 yrs",
     },
     {
       name: "VS Code",
       category: "Tools",
       logo: "/images/logo-vscode.png",
-      years: "3 yrs",
+      years: "1 yr",
     },
     {
       name: "Eclipse IDE",
       category: "Tools",
-      logo: "/images/logo-eclipse.png",
-      years: "2 yrs",
+      logo: "/images/logo-eclipseide.png",
+      years: "3 yrs",
     },
     {
       name: "Postman",
       category: "Tools",
       logo: "/images/logo-postman.png",
-      years: "2 yrs",
+      years: "1 yr",
     },
     {
       name: "Docker",
       category: "Tools",
       logo: "/images/logo-docker.png",
-      years: "1 yr",
     },
     {
       name: "Figma",
       category: "Tools",
       logo: "/images/logo-figma.png",
-      years: "1 yr",
+      years: "3 yrs",
     },
     {
       name: "pgAdmin",
       category: "Tools",
       logo: "/images/logo-pgadmin.png",
-      years: "2 yrs",
+      years: "3 yrs",
     },
   ];
 
