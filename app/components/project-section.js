@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { FaGlobe, FaAndroid, FaApple } from "react-icons/fa";
 
 export default function ProjectsSection() {
   const projects = [
@@ -8,38 +9,43 @@ export default function ProjectsSection() {
       name: "JB Portfolio",
       description:
         "An online store built with React, Next.js, and TailwindCSS.",
-      tech: "React.js, Next.js, TailwindCSS, Firebase",
-      image: "/images/project-ecommerce.png",
-      badge: "Live",
-    },
-    {
-      name: "Task Manager App",
-      description: "A productivity app with task tracking and reminders.",
-      tech: "React Native, Firebase, Redux",
-      image: "/images/project-taskmanager.png",
-      badge: "In Progress",
-    },
-    {
-      name: "Portfolio Website",
-      description: "My personal portfolio showcasing projects and skills.",
       tech: "Next.js, TailwindCSS",
-      image: "/images/project-portfolio.png",
-      badge: "Completed",
-    },
-    {
-      name: "Blog Platform",
-      description: "A full-stack blogging platform with authentication.",
-      tech: "Spring Boot, Thymeleaf, PostgreSQL",
-      image: "/images/project-blog.png",
+      image: "/images/pr1.png",
       badge: "Live",
+      type: "web",
     },
-    {
-      name: "Weather App",
-      description: "Displays real-time weather information based on location.",
-      tech: "JavaScript, OpenWeather API, HTML, CSS",
-      image: "/images/project-weather.png",
-      badge: "Completed",
-    },
+    // {
+    //   name: "Task Manager App",
+    //   description: "A productivity app with task tracking and reminders.",
+    //   tech: "React Native, Firebase, Redux",
+    //   image: "/images/project-taskmanager.png",
+    //   badge: "In Progress",
+    //   type: "android",
+    // },
+    // {
+    //   name: "Portfolio Website",
+    //   description: "My personal portfolio showcasing projects and skills.",
+    //   tech: "Next.js, TailwindCSS",
+    //   image: "/images/project-portfolio.png",
+    //   badge: "Completed",
+    //   type: "web",
+    // },
+    // {
+    //   name: "Blog Platform",
+    //   description: "A full-stack blogging platform with authentication.",
+    //   tech: "Spring Boot, Thymeleaf, PostgreSQL",
+    //   image: "/images/project-blog.png",
+    //   badge: "Live",
+    //   type: "web",
+    // },
+    // {
+    //   name: "Weather App",
+    //   description: "Displays real-time weather information based on location.",
+    //   tech: "JavaScript, OpenWeather API, HTML, CSS",
+    //   image: "/images/project-weather.png",
+    //   badge: "Completed",
+    //   type: "web",
+    // },
   ];
 
   return (
@@ -67,7 +73,17 @@ export default function ProjectsSection() {
 
               {/* Project Details */}
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                  {/* Conditional Icon */}
+                  {project.type === "web" && (
+                    <FaGlobe className="text-blue-500" />
+                  )}
+                  {project.type === "android" && (
+                    <FaAndroid className="text-green-500" />
+                  )}
+                  {project.type === "ios" && (
+                    <FaApple className="text-gray-800" />
+                  )}
                   {project.name}
                 </h3>
                 <p className="text-gray-600 text-sm mb-3">
