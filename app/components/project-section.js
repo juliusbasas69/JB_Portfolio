@@ -8,9 +8,36 @@ export default function ProjectsSection() {
     {
       name: "JB Portfolio",
       description:
-        "An online store built with React, Next.js, and TailwindCSS.",
+        "A personal portfolio website showcasing projects and skills.",
       tech: "Next.js, TailwindCSS",
       image: "/images/pr1.png",
+      badge: "Live",
+      type: "web",
+    },
+    {
+      name: "BorrowWhen – Item Lending Platform",
+      description:
+        "Platform to lend and borrow items with payment integration.",
+      tech: "Java, Spring Boot, JavaScript, HTML, Tailwind CSS, PostgreSQL, Stripe(Payment)",
+      image: "/images/pr-borrowwhen.png",
+      badge: "Live",
+      type: "web",
+    },
+    {
+      name: "FuturePath – Academic Guidance Platform",
+      description:
+        "Helps students plan their academic path and monitor progress.",
+      tech: "Java, Spring Boot, JavaScript, HTML, Tailwind CSS, PostgreSQL",
+      image: "/images/pr-futurepath.png",
+      badge: "Live",
+      type: "web",
+    },
+    {
+      name: "SPOTSelect – Project Proposal Platform",
+      description:
+        "A web platform for users to submit project proposals, get evaluated by Officers, Managers, and the TBI Board with feedback and notifications.",
+      tech: "Java, Spring Boot, Thymeleaf, PostgreSQL",
+      image: "/images/pr-spotselect.png",
       badge: "Live",
       type: "web",
     },
