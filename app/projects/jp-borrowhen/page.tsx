@@ -5,17 +5,21 @@ import { FaGithub } from "react-icons/fa";
 
 export default function BorrowhenPage() {
   return (
-    <div className="w-full py-12">
-      <HeroSection />
-      <DetailsSection />
-      <ScreenshotsSection />
+    <div>
+      <div className="w-full py-12 bg-sky-50">
+        <HeroSection />
+        <DetailsSection />
+      </div>
+      <div>
+        <ScreenshotsSection />
+      </div>
     </div>
   );
 }
 
 function HeroSection() {
   return (
-    <section className="max-w-7xl w-full m-auto px-6 mb-16">
+    <section className="max-w-7xl w-full m-auto px-6 mb-16 ">
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {/* Left Content */}
         <div>
@@ -94,6 +98,7 @@ function DetailsSection() {
           <li>User authentication and authorization</li>
           <li>Approval and request management</li>
           <li>Notifications and status tracking</li>
+          <li>Excel export of reports and data</li>
         </ul>
       </div>
 

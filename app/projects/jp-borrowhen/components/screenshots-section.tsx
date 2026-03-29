@@ -74,27 +74,48 @@ export default function ScreenshotsSection() {
 
   const borrowerScreens: Screen[] = [
     {
-      name: "Borrower Dashboard",
-      src: "/images/projects/borrower-dashboard.png",
+      name: "Dashboard",
+      src: "/images/projects/borrowhen/borrower/dashboard.png",
     },
     {
-      name: "Borrower Requests",
-      src: "/images/projects/borrower-requests.png",
+      name: "Inventory",
+      src: "/images/projects/borrowhen/borrower/inventory.png",
+    },
+    {
+      name: "Inventory - Borrow Request (Modal)",
+      src: "/images/projects/borrowhen/borrower/inventory-borrow-request.png",
     },
   ];
 
   const lenderScreens: Screen[] = [
-    { name: "Lender Dashboard", src: "/images/projects/lender-dashboard.png" },
+    {
+      name: "Lender Dashboard",
+      src: "/images/projects/borrowhen/lender/dashboard.png",
+    },
     { name: "Lender Approvals", src: "/images/projects/lender-approvals.png" },
   ];
 
   const adminScreens: Screen[] = [
-    { name: "Admin Dashboard", src: "/images/projects/admin-dashboard.png" },
-    { name: "Admin Management", src: "/images/projects/admin-management.png" },
+    {
+      name: "Admin Dashboard",
+      src: "/images/projects/borrowhen/admin/dashboard.png",
+    },
+    {
+      name: "Inventory",
+      src: "/images/projects/borrowhen/admin/inventory-list.png",
+    },
+    {
+      name: "Inventory Add",
+      src: "/images/projects/borrowhen/admin/inventory-add.png",
+    },
+    {
+      name: "Request List",
+      src: "/images/projects/borrowhen/admin/request-list.png",
+    },
   ];
 
   return (
-    <div>
+    <div className="my-10">
       <ScreensSection
         title="Landing / Login / Register Screens"
         screens={landingScreens}
