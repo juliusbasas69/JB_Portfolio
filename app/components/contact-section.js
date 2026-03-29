@@ -23,7 +23,9 @@ export default function ContactSection() {
             src="/images/contactme-nobg.png"
             alt="Contact Me"
             fill
+            sizes="512px"
             className="object-contain"
+            preload={true}
           />
         </div>
 

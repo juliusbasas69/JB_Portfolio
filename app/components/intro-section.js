@@ -14,6 +14,8 @@ export default function IntroSection() {
               src="/images/me.png"
               alt="Julius Basas"
               fill
+              sizes="512px"
+              preload={true}
               className="object-cover"
             />
           </div>

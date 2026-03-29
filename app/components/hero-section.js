@@ -69,8 +69,9 @@ export default function HeroSection() {
             <Image
               src="/images/welcome-robot.png"
               alt="Robot"
-              width={256}
-              height={256}
+              width={512}
+              height={512}
+              preload={true}
               className="absolute -bottom-30 -left-12 w-8 h-88 md:w-60 lg:w-80 z-0 pointer-events-none"
             />
           </div>
