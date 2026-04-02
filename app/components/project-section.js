@@ -62,6 +62,21 @@ export default function ProjectsSection() {
       type: "web",
       slug: "spotselect",
     },
+    {
+      name: "ServiceConnect – Service Booking Platform",
+      description:
+        "A web and mobile platform where users can book services from verified service providers. Each service provider has an employee account who can accept or reject bookings. Once accepted, the service is performed on-site (home or office), and the provider completes the booking and charges the user.",
+      tech: "PHP, Laravel, Flutter, Dart, Firebase, MySQL, Google Maps API",
+      image: "/images/projects/serviceconnect/pr-serviceconnect.png",
+      badges: [
+        { label: "Completed", color: "bg-sky-100 text-sky-800" },
+        { label: "Web", color: "bg-blue-100 text-blue-800" },
+        { label: "Android", color: "bg-green-100 text-green-800" },
+        { label: "My Capstone", color: "bg-purple-100 text-purple-800" },
+      ],
+      type: ["web", "android"], // updated type to array
+      slug: "serviceconnect",
+    },
   ];
 
   return (
@@ -90,16 +105,25 @@ export default function ProjectsSection() {
               {/* Project Details */}
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                  {/* Conditional Icon */}
-                  {project.type === "web" && (
+                  {/* Conditional Icons */}
+                  {Array.isArray(project.type) ? (
+                    project.type.map((t) => {
+                      if (t === "web")
+                        return <FaGlobe key="web" className="text-blue-500" />;
+                      if (t === "android")
+                        return (
+                          <FaAndroid key="android" className="text-green-500" />
+                        );
+                      if (t === "ios")
+                        return <FaApple key="ios" className="text-gray-800" />;
+                    })
+                  ) : project.type === "web" ? (
                     <FaGlobe className="text-blue-500" />
-                  )}
-                  {project.type === "android" && (
+                  ) : project.type === "android" ? (
                     <FaAndroid className="text-green-500" />
-                  )}
-                  {project.type === "ios" && (
+                  ) : project.type === "ios" ? (
                     <FaApple className="text-gray-800" />
-                  )}
+                  ) : null}
 
                   {/* Project Name as Link */}
                   <Link
@@ -111,7 +135,9 @@ export default function ProjectsSection() {
                 </h3>
 
                 <p className="text-gray-600 text-sm mb-3">
-                  {project.description}
+                  {project.description.length > 100
+                    ? project.description.slice(0, 100) + "..."
+                    : project.description}
                 </p>
                 <p className="text-gray-500 text-xs mb-4">{project.tech}</p>
 

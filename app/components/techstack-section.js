@@ -28,6 +28,11 @@ export default function TechStackSection() {
       category: "Language",
       logo: "/images/logo/logo-dart.png",
     },
+    {
+      name: "Lua",
+      category: "Language",
+      logo: "/images/logo/logo-lua.png",
+    },
 
     {
       name: "React.js",
@@ -53,6 +58,16 @@ export default function TechStackSection() {
       logo: "/images/logo/logo-flutter.png",
     },
 
+    {
+      name: "PHP",
+      category: "Backend",
+      logo: "/images/logo/logo-php.png",
+    },
+    {
+      name: "Laravel",
+      category: "Backend",
+      logo: "/images/logo/logo-laravel.png",
+    },
     {
       name: "ASP.NET",
       category: "Backend",
