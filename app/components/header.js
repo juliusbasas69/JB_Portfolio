@@ -21,13 +21,21 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-8 text-sm font-medium">
-          <Link href="#intro" className="hover:text-blue-600 transition">
-            Intro
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
           </Link>
-          <Link href="#about" className="hover:text-blue-600 transition">
-            About
+          <Link
+            href="#about"
+            scroll={true}
+            className="hover:text-blue-600 transition"
+          >
+            About Me
           </Link>
-          <Link href="#project" className="hover:text-blue-600 transition">
+          <Link
+            href="#project"
+            scroll={true}
+            className="hover:text-blue-600 transition"
+          >
             Project
           </Link>
           <Link href="#contact" className="hover:text-blue-600 transition">
@@ -36,7 +44,7 @@ export default function Header() {
 
           <Link
             href="#hire"
-            className="bg-btn text-white px-4 py-2 rounded-full hover:bg-blue-700 transition flex items-center gap-2"
+            className="bg-btn text-white px-4 py-2 rounded-full hover:bg-blue-700 flex items-center gap-2 hover:scale-105 transition"
           >
             Hire Me <HiArrowRight className="w-5 h-5" />
           </Link>

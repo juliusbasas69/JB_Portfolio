@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function IntroSection() {
   return (
-    <section className="mt-16 w-full bg-white py-20 px-6">
+    <section id="about" className="mt-16 w-full bg-white py-20 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Left: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
@@ -50,7 +50,7 @@ export default function IntroSection() {
           <Link
             href="/resume.pdf" // replace with the path to your CV file
             download
-            className="inline-block bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition duration-300"
+            className="inline-block bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition duration-300"
           >
             Download CV
           </Link>

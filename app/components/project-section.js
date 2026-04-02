@@ -65,7 +65,7 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <section className="w-full py-12 px-6">
+    <section id="project" className="w-full py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
           My Projects

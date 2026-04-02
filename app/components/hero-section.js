@@ -53,14 +53,14 @@ export default function HeroSection() {
           <div className="flex justify-center gap-4">
             <Link
               href="/projects"
-              className="bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full transition duration-300"
+              className="bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full duration-300 hover:scale-105 transition"
             >
               Explore My Projects
             </Link>
 
             <Link
               href="/contact"
-              className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 py-3 rounded-full transition duration-300"
+              className="border border-blue-500 text-sky-500 h px-6 py-3 rounded-full hover:scale-105 transition duration-300"
             >
               Contact Me
             </Link>

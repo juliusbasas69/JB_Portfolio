@@ -34,6 +34,11 @@ function HeroSection() {
             streamline the borrowing experience.
           </p>
 
+          <p className="text-gray-500 mt-2 italic text-sm">
+            This project was completed as a capstone and is available for
+            reference in my GitHub repository.
+          </p>
+
           {/* GitHub */}
           <div className="mt-6">
             <Link
@@ -103,6 +108,7 @@ function DetailsSection() {
       </div>
 
       {/* Right */}
+      {/* Right Column */}
       <div>
         <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
 
@@ -130,18 +136,29 @@ function DetailsSection() {
 
         <h2 className="text-2xl font-semibold mb-4">Project Info</h2>
 
-        <div className="space-y-3 text-gray-600">
-          <p>
-            <span className="font-medium text-gray-800">Role:</span> Full Stack
-            Developer
-          </p>
-          <p>
-            <span className="font-medium text-gray-800">Type:</span> Web
-            Application
-          </p>
-          <p>
-            <span className="font-medium text-gray-800">Status:</span> Defended
-          </p>
+        <div className="space-y-3 text-gray-700">
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-gray-800">Role:</span>
+            <span>Full Stack Developer</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-gray-800">Type:</span>
+            <span>Web Application</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-gray-800">Status:</span>
+            <span>
+              <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                Defended
+              </span>
+            </span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-gray-800">Availability:</span>
+            <span className="italic text-gray-500">
+              Reference only (GitHub)
+            </span>
+          </div>
         </div>
       </div>
     </section>

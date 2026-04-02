@@ -4,7 +4,6 @@ import ProfessionalSkillsSection from "./components/professional-skills-section"
 import TechStackSection from "./components/techstack-section";
 import WorkExperienceSection from "./components/workexperience-section";
 import ProjectSection from "./components/project-section";
-import ContactSesction from "./components/contact-section";
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
       <TechStackSection />
       <WorkExperienceSection />
       <ProjectSection />
-      <ContactSesction />
     </>
   );
 }
