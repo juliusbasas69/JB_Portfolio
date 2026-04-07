@@ -53,7 +53,7 @@ export default function ProjectsSection() {
       description:
         "A web platform for users to submit project proposals, get evaluated by Officers, Managers, and the TBI Board with feedback and notifications.",
       tech: "Java, Spring Boot, Thymeleaf, PostgreSQL",
-      image: "/images/projects/spotselect/pr-spotselect.png",
+      image: "/images/no-image.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Web", color: "bg-blue-100 text-blue-800" },
@@ -67,7 +67,7 @@ export default function ProjectsSection() {
       description:
         "A web and mobile platform where users can book services from verified service providers. Each service provider has an employee account who can accept or reject bookings. Once accepted, the service is performed on-site (home or office), and the provider completes the booking and charges the user.",
       tech: "PHP, Laravel, Flutter, Dart, Firebase, MySQL, Google Maps API",
-      image: "/images/projects/serviceconnect/pr-serviceconnect.png",
+      image: "/images/no-image.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Web", color: "bg-blue-100 text-blue-800" },
@@ -82,9 +82,13 @@ export default function ProjectsSection() {
   return (
     <section id="project" className="w-full py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800  text-center">
           My Projects
         </h2>
+        <p className="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-10 ">
+          Personal, academic, and freelance projects built for clients and skill
+          development.
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
@@ -154,17 +158,6 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </span>
-                {/* Badge */}
-                {/* <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.badges?.map((badge, i) => (
-                    <span
-                      key={i}
-                      className={`px-3 py-1 text-xs font-medium rounded-full ${badge.color}`}
-                    >
-                      {badge.label}
-                    </span>
-                  ))}
-                </div> */}
               </div>
             </div>
           ))}
