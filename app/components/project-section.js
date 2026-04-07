@@ -90,7 +90,7 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col"
+              className="bg-white rounded-2xl shadow-md flex flex-col relative card"
             >
               {/* Project Image */}
               <div className="relative w-full h-48">
@@ -106,24 +106,6 @@ export default function ProjectsSection() {
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
                   {/* Conditional Icons */}
-                  {Array.isArray(project.type) ? (
-                    project.type.map((t) => {
-                      if (t === "web")
-                        return <FaGlobe key="web" className="text-blue-500" />;
-                      if (t === "android")
-                        return (
-                          <FaAndroid key="android" className="text-green-500" />
-                        );
-                      if (t === "ios")
-                        return <FaApple key="ios" className="text-gray-800" />;
-                    })
-                  ) : project.type === "web" ? (
-                    <FaGlobe className="text-blue-500" />
-                  ) : project.type === "android" ? (
-                    <FaAndroid className="text-green-500" />
-                  ) : project.type === "ios" ? (
-                    <FaApple className="text-gray-800" />
-                  ) : null}
 
                   {/* Project Name as Link */}
                   <Link
@@ -139,10 +121,41 @@ export default function ProjectsSection() {
                     ? project.description.slice(0, 100) + "..."
                     : project.description}
                 </p>
-                <p className="text-gray-500 text-xs mb-4">{project.tech}</p>
+                <p className="text-gray-500 text-xs mb-8">{project.tech}</p>
 
+                <span className="banner text-white px-4 flex flex-row gap-2 items-center justify-center text-sm">
+                  {(Array.isArray(project.type)
+                    ? project.type
+                    : [project.type]
+                  ).map((t, index, arr) => (
+                    <span key={t} className="flex items-center gap-1">
+                      {t === "web" && (
+                        <>
+                          <FaGlobe />
+                          <span>Website</span>
+                        </>
+                      )}
+
+                      {t === "android" && (
+                        <>
+                          <FaAndroid className="text-green-400" />
+                          <span>Android</span>
+                        </>
+                      )}
+
+                      {t === "ios" && (
+                        <>
+                          <FaApple />
+                          <span>iOS</span>
+                        </>
+                      )}
+
+                      {index < arr.length - 1 && <span>&</span>}
+                    </span>
+                  ))}
+                </span>
                 {/* Badge */}
-                <div className="flex flex-wrap gap-2 mt-auto">
+                {/* <div className="flex flex-wrap gap-2 mt-auto">
                   {project.badges?.map((badge, i) => (
                     <span
                       key={i}
@@ -151,7 +164,7 @@ export default function ProjectsSection() {
                       {badge.label}
                     </span>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

@@ -84,3 +84,39 @@ body {
   top: 18px;
   transform: rotate(45deg);
 }
+
+.card .banner {
+  position: absolute;
+  width: fit-content;
+  min-width: 200px;
+  height: 32px;
+  background: #1099de;
+  z-index: 10;
+  border-radius: 30px;
+  left: -15px;
+  bottom: 10px;
+  border-top-left-radius: 0;
+}
+
+.card .banner::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  background: #248cc1;
+  left: 0px;
+  bottom: 30px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  z-index: 11;
+}
+
+.card .banner::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 0px;
+  bottom: 30px;
+  background: #1099de;
+}
