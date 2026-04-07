@@ -52,7 +52,7 @@ export default function ProjectsSection() {
       name: "SPOTSelect – Project Proposal Platform",
       description:
         "A web platform for users to submit project proposals, get evaluated by Officers, Managers, and the TBI Board with feedback and notifications.",
-      tech: "Java, Spring Boot, Thymeleaf, PostgreSQL",
+      tech: "Java, Spring Boot, JavaScript, HTML, CSS, Thymeleaf, PostgreSQL",
       image: "/images/no-image.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },

@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function ExperienceSection() {
   const workExperience = [
     {
+      avatar: "/images/robot-freelance.png",
       title: "Freelance Full Stack Developer",
       company: "Self-Employed",
       month: "Present",
@@ -26,6 +27,7 @@ export default function ExperienceSection() {
       projects: ["FuturePath", "SpotSelect", "Borrowhen", "ServiceConnect"],
     },
     {
+      avatar: "/images/robot-student.png",
       title: "Student Trainee",
       company: "Alliance Software Inc.",
       month: "Feb 2024 - Jun 2024",
@@ -46,6 +48,7 @@ export default function ExperienceSection() {
       projects: ["Hotel Booking System"],
     },
     {
+      avatar: "/images/robot-intern.png",
       title: "Intern | Full Stack Developer",
       company: "Fullscale Inc.",
       month: "Feb 2025 - Jun 2025",
@@ -68,6 +71,7 @@ export default function ExperienceSection() {
       projects: ["Task management app"],
     },
     {
+      avatar: "/images/robot-developer.png",
       title: "Full Stack Developer",
       company: "BridgeCulture Inc.",
       month: "Feb 2023 - Feb 2026",
@@ -91,7 +95,7 @@ export default function ExperienceSection() {
         "Gained experience in project leadership and code optimization",
         "Enhanced mentoring and team collaboration abilities",
       ],
-      projects: ["BC Workflow (Live)", "Cyzennt Workflow"],
+      projects: ["Preschool Project", "BC Workflow (Live)", "Cyzennt Workflow"],
     },
   ];
 
@@ -113,36 +117,46 @@ export default function ExperienceSection() {
             <h3 className="text-xl font-semibold mb-4">Work Experience</h3>
             {workExperience.map((work, i) => (
               <div key={i} className="w-full">
-                <div className="flex flex-row gap-5 items-center">
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-md w-full box">
-                    <div className="w-12 h-12 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center">
-                      <Briefcase size={24} />
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-gray-400">{work.month}</p>
-                      <h4 className="text-lg font-semibold text-gray-800">
-                        {work.title}
-                      </h4>
-                      <p className="text-sm text-gray-500">{work.company}</p>
-                    </div>
-
-                    <div className="ribbon ribbon-top-right">
-                      <span>{work.duration}</span>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => toggle(i)}
-                    className="w-10 h-10 m-3 flex items-center justify-center rounded-full bg-btn text-white shadow-md hover:scale-105 transition cursor-pointer"
-                  >
-                    <ArrowDown
-                      size={18}
-                      className={`transition-transform ${
-                        openIndex === i ? "rotate-180" : ""
-                      }`}
+                <div className="flex flex-row items-center">
+                  <div className="relative w-24 h-24">
+                    <Image
+                      src={work.avatar ?? "/images/no-image.png"} // Make sure this path is correct in /public/images/
+                      alt="Robot"
+                      fill
+                      className="object-contain"
                     />
-                  </button>
+                  </div>
+                  <div className="flex flex-row gap-5 items-center w-full">
+                    <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-md w-full box">
+                      <div className="w-12 h-12 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center">
+                        <Briefcase size={24} />
+                      </div>
+
+                      <div>
+                        <p className="text-xs text-gray-400">{work.month}</p>
+                        <h4 className="text-lg font-semibold text-gray-800">
+                          {work.title}
+                        </h4>
+                        <p className="text-sm text-gray-500">{work.company}</p>
+                      </div>
+
+                      <div className="ribbon ribbon-top-right">
+                        <span>{work.duration}</span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => toggle(i)}
+                      className="w-10 h-10 m-3 flex items-center justify-center rounded-full bg-btn text-white shadow-md hover:scale-105 transition cursor-pointer"
+                    >
+                      <ArrowDown
+                        size={18}
+                        className={`transition-transform ${
+                          openIndex === i ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  </div>
                 </div>
 
                 {openIndex === i && (
