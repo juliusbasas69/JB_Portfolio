@@ -39,14 +39,14 @@ export default function ProjectsSection() {
       description:
         "Helps students plan their academic path and monitor progress.",
       tech: "Java, Spring Boot, JavaScript, HTML, Tailwind CSS, PostgreSQL",
-      image: "/images/projects/futurepath/pr-futurepath.png",
+      image: "/images/projects/futurepath/jp-futurepath.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Web", color: "bg-blue-100 text-blue-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
-      slug: "futurepath",
+      slug: "jp-futurepath",
     },
     {
       name: "SPOTSelect – Project Proposal Platform",

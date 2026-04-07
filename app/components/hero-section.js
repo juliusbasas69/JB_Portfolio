@@ -52,14 +52,14 @@ export default function HeroSection() {
           {/* Buttons */}
           <div className="flex justify-center gap-4">
             <Link
-              href="/projects"
+              href="#project"
               className="bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full duration-300 hover:scale-105 transition"
             >
               Explore My Projects
             </Link>
 
             <Link
-              href="/contact"
+              href="#contact"
               className="border border-blue-500 text-sky-500 h px-6 py-3 rounded-full hover:scale-105 transition duration-300"
             >
               Contact Me

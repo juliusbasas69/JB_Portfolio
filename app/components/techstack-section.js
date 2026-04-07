@@ -33,6 +33,11 @@ export default function TechStackSection() {
       category: "Language",
       logo: "/images/logo/logo-lua.png",
     },
+    {
+      name: "Python",
+      category: "Language",
+      logo: "/images/logo/logo-python.png",
+    },
 
     {
       name: "React.js",

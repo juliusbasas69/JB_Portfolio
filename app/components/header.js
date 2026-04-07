@@ -43,7 +43,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="#hire"
+            href="#contact"
             className="bg-btn text-white px-4 py-2 rounded-full hover:bg-blue-700 flex items-center gap-2 hover:scale-105 transition"
           >
             Hire Me <HiArrowRight className="w-5 h-5" />

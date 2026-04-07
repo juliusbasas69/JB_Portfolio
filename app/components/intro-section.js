@@ -48,8 +48,8 @@ export default function IntroSection() {
           </p>
 
           <Link
-            href="/resume.pdf" // replace with the path to your CV file
-            download
+            href="/JB_Resume.pdf" // replace with the path to your CV file
+            download="Julius_Basas_CV.pdf"
             className="inline-block bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition duration-300"
           >
             Download CV
