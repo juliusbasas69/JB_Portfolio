@@ -1,4 +1,4 @@
-import { Award, Briefcase } from "lucide-react";
+import { Award, Trophy } from "lucide-react";
 
 export default function CertificateAchievementSection() {
   const certificates = [
@@ -59,7 +59,7 @@ export default function CertificateAchievementSection() {
                 className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-md"
               >
                 <div className="w-12 h-12 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center">
-                  <Briefcase size={24} />
+                  <Trophy size={24} />
                 </div>
 
                 <div>
