@@ -15,6 +15,7 @@ export default function ProfessionalSkillsSection() {
     { name: "Debugging", category: "Development", level: "Advanced" },
     { name: "CI/CD", category: "DevOps", level: "Beginner" },
     { name: "Monitoring", category: "DevOps", level: "Beginner" },
+    { name: "Swagger / OpenAPI", category: "Quality", level: "Intermediate" },
   ];
 
   const categories = [
