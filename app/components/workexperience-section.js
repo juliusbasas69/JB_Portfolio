@@ -8,6 +8,7 @@ export default function ExperienceSection() {
   const workExperience = [
     {
       avatar: "/images/robot-freelance.png",
+      logo: "/images/logo/freelancer.png",
       title: "Freelance Full Stack Developer",
       company: "Self-Employed",
       month: "Present",
@@ -28,6 +29,7 @@ export default function ExperienceSection() {
     },
     {
       avatar: "/images/robot-student.png",
+      logo: "/images/logo/alliance.png",
       title: "Student Trainee",
       company: "Alliance Software Inc.",
       month: "Feb 2024 - Jun 2024",
@@ -49,6 +51,7 @@ export default function ExperienceSection() {
     },
     {
       avatar: "/images/robot-intern.png",
+      logo: "/images/logo/fullscale.png",
       title: "Intern | Full Stack Developer",
       company: "Fullscale Inc.",
       month: "Feb 2025 - Jun 2025",
@@ -72,6 +75,7 @@ export default function ExperienceSection() {
     },
     {
       avatar: "/images/robot-developer.png",
+      logo: "/images/logo/bridgeculture.png",
       title: "Full Stack Developer",
       company: "BridgeCulture Inc.",
       month: "Feb 2023 - Feb 2026",
@@ -127,12 +131,18 @@ export default function ExperienceSection() {
                     />
                   </div>
                   <div className="flex flex-row gap-5 items-center w-full">
-                    <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg shadow-md w-full box">
-                      <div className="w-12 h-12 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center">
-                        <Briefcase size={24} />
+                    <div className="flex items-center gap-4 p-1 bg-gray-50 rounded-lg shadow-md w-full box bg-white">
+                      <div className="w-24 h-24 bg-white flex items-center justify-center relative">
+                        <Image
+                          src={work.logo ?? "/images/no-image.png"}
+                          alt={work.company}
+                          fill
+                          sizes="256px"
+                          className="object-contain"
+                        />
                       </div>
 
-                      <div>
+                      <div class="py-3">
                         <p className="text-xs text-gray-400">{work.month}</p>
                         <h4 className="text-lg font-semibold text-gray-800">
                           {work.title}
