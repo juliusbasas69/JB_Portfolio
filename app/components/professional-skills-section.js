@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function ProfessionalSkillsSection() {
   const skills = [
-    { name: "Microservices", category: "Architecture", level: "Beginner" },
+    { name: "Microservices", category: "Architecture", level: "Intermediate" },
     { name: "Web Development", category: "Development", level: "Advanced" },
     { name: "Testing", category: "Quality", level: "Intermediate" },
     { name: "Documentation", category: "Process", level: "Intermediate" },
@@ -13,6 +13,8 @@ export default function ProfessionalSkillsSection() {
     { name: "Agile / Scrum", category: "Process", level: "Intermediate" },
     { name: "Code Review", category: "Quality", level: "Advanced" },
     { name: "Debugging", category: "Development", level: "Advanced" },
+    { name: "CI/CD", category: "DevOps", level: "Beginner" },
+    { name: "Monitoring", category: "DevOps", level: "Beginner" },
   ];
 
   const categories = [
@@ -22,6 +24,7 @@ export default function ProfessionalSkillsSection() {
     "Quality",
     "Process",
     "Backend",
+    "DevOps",
   ];
 
   const [activeCategory, setActiveCategory] = useState("All");

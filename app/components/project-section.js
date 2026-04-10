@@ -82,8 +82,11 @@ export default function ProjectsSection() {
   return (
     <section id="project" className="w-full py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800  text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800  text-center flex items-center justify-center gap-1">
           My Projects
+          <span className="bg-yellow-200 text-yellow-900 text-[10px] px-1.5 py-0.5 rounded-full font-medium">
+            Updating
+          </span>
         </h2>
         <p className="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-10 ">
           Personal, academic, and freelance projects built for clients and skill

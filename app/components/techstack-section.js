@@ -178,6 +178,21 @@ export default function TechStackSection() {
       logo: "/images/logo/logo-pgadmin.png",
       years: "3 yrs",
     },
+    {
+      name: "Grafana",
+      category: "Monitoring",
+      logo: "/images/logo/logo-grafana.png",
+    },
+    {
+      name: "Prometheus",
+      category: "Monitoring",
+      logo: "/images/logo/logo-prometheus.png",
+    },
+    {
+      name: "Kafka",
+      category: "Backend",
+      logo: "/images/logo/logo-kafka.png",
+    },
   ];
 
   const categories = [
@@ -189,6 +204,7 @@ export default function TechStackSection() {
     "Cloud",
     "Testing",
     "Tools",
+    "Monitoring",
   ];
 
   const [activeCategory, setActiveCategory] = useState("All");
