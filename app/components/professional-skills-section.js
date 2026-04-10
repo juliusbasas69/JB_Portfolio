@@ -4,27 +4,104 @@ import { useState } from "react";
 
 export default function ProfessionalSkillsSection() {
   const skills = [
-    { name: "Microservices", category: "Architecture", level: "Intermediate" },
-    { name: "Web Development", category: "Development", level: "Advanced" },
-    { name: "Testing", category: "Quality", level: "Intermediate" },
-    { name: "Documentation", category: "Process", level: "Intermediate" },
-    { name: "REST API Design", category: "Backend", level: "Advanced" },
-    { name: "System Design", category: "Architecture", level: "Intermediate" },
-    { name: "Agile / Scrum", category: "Process", level: "Intermediate" },
-    { name: "Code Review", category: "Quality", level: "Advanced" },
-    { name: "Debugging", category: "Development", level: "Advanced" },
-    { name: "CI/CD", category: "DevOps", level: "Beginner" },
-    { name: "Monitoring", category: "DevOps", level: "Beginner" },
-    { name: "Swagger / OpenAPI", category: "Quality", level: "Intermediate" },
+    {
+      name: "Microservices",
+      category: "Architecture",
+      level: "Intermediate",
+      tools: ["Spring Boot", "REST API", "Docker", "Kafka"],
+    },
+    {
+      name: "Web Development",
+      category: "Development",
+      level: "Advanced",
+      tools: ["React", "Next.js", "Thymeleaf", "HTML", "CSS", "JavaScript"],
+    },
+    {
+      name: "Testing",
+      category: "Quality",
+      level: "Intermediate",
+      tools: ["JUnit", "Postman", "Manual Testing"],
+    },
+    {
+      name: "Technical Documentation",
+      category: "Process",
+      level: "Intermediate",
+      tools: ["Swagger/OpenAPI", "Markdown", "API Specs"],
+    },
+    {
+      name: "UI / Screen Documentation",
+      category: "Process",
+      level: "Intermediate",
+      tools: ["UI Flows", "Feature Guides", "Screenshots"],
+    },
+    {
+      name: "REST API Design",
+      category: "Backend",
+      level: "Advanced",
+      tools: ["Spring Boot", "Node.js", "Express", "HTTP Standards"],
+    },
+    {
+      name: "System Design",
+      category: "Architecture",
+      level: "Intermediate",
+      tools: ["Scalability Patterns", "Load Balancing", "Caching Concepts"],
+    },
+    {
+      name: "Agile / Scrum",
+      category: "Process",
+      level: "Intermediate",
+      tools: ["Sprint Planning", "Jira", "Standups"],
+    },
+    {
+      name: "Code Review",
+      category: "Quality",
+      level: "Advanced",
+      tools: ["GitHub PRs", "Best Practices", "Clean Code"],
+    },
+    {
+      name: "Debugging",
+      category: "Development",
+      level: "Advanced",
+      tools: ["DevTools", "Logs Analysis", "Breakpoints"],
+    },
+    {
+      name: "CI/CD",
+      category: "DevOps",
+      level: "Beginner",
+      tools: ["GitHub Actions", "Automated Build & Deploy"],
+    },
+    {
+      name: "Monitoring",
+      category: "DevOps",
+      level: "Beginner",
+      tools: [
+        "Prometheus",
+        "Grafana",
+        "Logging",
+        "Basic Observability Concepts",
+      ],
+    },
+    {
+      name: "Swagger / OpenAPI",
+      category: "Quality",
+      level: "Intermediate",
+      tools: ["API Documentation", "Endpoint Testing"],
+    },
+    {
+      name: "Figma",
+      category: "Process",
+      level: "Intermediate",
+      tools: ["UI Design", "Wireframes", "Prototypes"],
+    },
   ];
 
   const categories = [
     "All",
     "Architecture",
     "Development",
+    "Backend",
     "Quality",
     "Process",
-    "Backend",
     "DevOps",
   ];
 
@@ -75,6 +152,10 @@ export default function ProfessionalSkillsSection() {
                 <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
                   {skill.level}
                 </span>
+              </div>
+
+              <div className="text-xs text-gray-500 mt-2">
+                {skill.tools?.join(", ")}
               </div>
             </div>
           ))}
