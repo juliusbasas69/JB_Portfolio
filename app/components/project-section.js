@@ -14,7 +14,19 @@ export default function ProjectsSection() {
       image: "/images/projects/portfolio/jp-portfolio.png",
       badges: [
         { label: "Live", color: "bg-green-100 text-green-800" },
-        { label: "Web", color: "bg-blue-100 text-blue-800" },
+        { label: "Personal", color: "bg-purple-100 text-purple-800" },
+      ],
+      type: "web",
+      slug: "jp-portfolio",
+    },
+    {
+      name: "Acadex",
+      description:
+        "Acadex is a web-based platform for managing programming assignments with built-in code compilation. Key Features: Online code editor with integrated compiler Assignment submission and tracking Professor dashboard for reviewing and grading Secure user authentication Organized academic workflow managements",
+      tech: "Next.js, Springboot, Java, Microservices,",
+      image: "/images/no-image.png",
+      badges: [
+        { label: "Ongoing", color: "bg-yellow-100 text-yellow-800" },
         { label: "Personal", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
@@ -28,7 +40,6 @@ export default function ProjectsSection() {
       image: "/images/projects/borrowhen/jp-borrowhen.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
-        { label: "Web", color: "bg-blue-100 text-blue-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
@@ -42,7 +53,6 @@ export default function ProjectsSection() {
       image: "/images/projects/futurepath/jp-futurepath.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
-        { label: "Web", color: "bg-blue-100 text-blue-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
@@ -56,7 +66,6 @@ export default function ProjectsSection() {
       image: "/images/no-image.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
-        { label: "Web", color: "bg-blue-100 text-blue-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
@@ -70,8 +79,6 @@ export default function ProjectsSection() {
       image: "/images/no-image.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
-        { label: "Web", color: "bg-blue-100 text-blue-800" },
-        { label: "Android", color: "bg-green-100 text-green-800" },
         { label: "My Capstone", color: "bg-purple-100 text-purple-800" },
       ],
       type: ["web", "android"], // updated type to array
@@ -105,6 +112,7 @@ export default function ProjectsSection() {
                   src={project.image}
                   alt={project.name}
                   fill
+                  sizes="256px"
                   className="object-cover"
                 />
               </div>
@@ -128,6 +136,16 @@ export default function ProjectsSection() {
                     ? project.description.slice(0, 100) + "..."
                     : project.description}
                 </p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.badges?.map((badge, i) => (
+                    <span
+                      key={i}
+                      className={`px-3 py-1 text-xs font-medium rounded-full ${badge.color}`}
+                    >
+                      {badge.label}
+                    </span>
+                  ))}
+                </div>
                 <p className="text-gray-500 text-xs mb-8">{project.tech}</p>
 
                 <span className="banner text-white px-4 flex flex-row gap-2 items-center justify-center text-sm">

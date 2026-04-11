@@ -102,6 +102,11 @@ export default function Footer() {
                   jusbas0713@gmail.com
                 </p>
               </div>
+
+              <div className="mt-2">
+                <p className="text-xs text-gray-400">Other Email</p>
+                <p className="font-medium text-gray-700">jusbas098@gmail.com</p>
+              </div>
             </div>
           </div>
 

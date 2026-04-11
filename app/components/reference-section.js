@@ -17,10 +17,10 @@ export default function ReferenceSection() {
       relationship: "Former Team Lead",
     },
     {
-      name: "Yoshiaki Okada",
-      company: "BridgeCulture Inc.",
-      role: "Japanese Staff / Business Coordinator",
-      relationship: "IT Supervisor",
+      name: "Karl Arboiz",
+      company: "Accenture",
+      role: "Custom Software Engineer",
+      relationship: "Former Colleague",
     },
   ];
 
