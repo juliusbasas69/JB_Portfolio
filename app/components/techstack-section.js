@@ -119,6 +119,12 @@ export default function TechStackSection() {
     },
 
     {
+      name: "Redis",
+      category: "Caching",
+      logo: "/images/logo/logo-redis.png",
+    },
+
+    {
       name: "Firebase",
       category: "Cloud",
       logo: "/images/logo/logo-firebase.png",
@@ -201,6 +207,7 @@ export default function TechStackSection() {
     "Frontend",
     "Backend",
     "Database",
+    "Caching",
     "Cloud",
     "Testing",
     "Tools",

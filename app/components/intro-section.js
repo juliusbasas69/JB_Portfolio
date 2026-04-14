@@ -47,13 +47,19 @@ export default function IntroSection() {
             solutions through collaboration and dedication.
           </p>
 
-          <Link
-            href="/JB_CV.pdf" // replace with the path to your CV file
-            download="Julius_Basas_CV.pdf"
-            className="inline-block bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition duration-300"
-          >
-            Download CV
-          </Link>
+          <div className="flex flex-col items-start gap-1">
+            <Link
+              href="/JB_CV.pdf"
+              download="Julius_Basas_CV.pdf"
+              className="inline-block bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition duration-300"
+            >
+              Download CV
+            </Link>
+
+            <span className="text-sm text-gray-500">
+              Last updated: April 2026
+            </span>
+          </div>
         </div>
       </div>
     </section>

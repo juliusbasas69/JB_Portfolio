@@ -8,7 +8,14 @@ export default function ProfessionalSkillsSection() {
       name: "Microservices",
       category: "Architecture",
       level: "Intermediate",
-      tools: ["Spring Boot", "REST API", "Docker", "Kafka"],
+      tools: [
+        "Spring Boot",
+        "REST API",
+        "Docker",
+        "Kafka",
+        "Redis",
+        "Spring Session",
+      ],
     },
     {
       name: "Web Development",
@@ -92,6 +99,23 @@ export default function ProfessionalSkillsSection() {
       category: "Process",
       level: "Intermediate",
       tools: ["UI Design", "Wireframes", "Prototypes"],
+    },
+    {
+      name: "Caching",
+      category: "Architecture",
+      level: "Intermediate",
+      tools: ["Redis", "Cache Strategies", "Performance Optimization"],
+    },
+    {
+      name: "Authentication & Security",
+      category: "Backend",
+      level: "Intermediate",
+      tools: [
+        "JWT Authentication",
+        "Spring Security",
+        "Role-Based Access Control (RBAC)",
+        "API Security",
+      ],
     },
   ];
 

@@ -91,7 +91,7 @@ export default function HeroSection() {
               <p className="text-sm text-gray-500 text-xs whitespace-nowrap">
                 Web Development
               </p>
-              <p className="font-semibold text-gray-800">5</p>
+              <p className="font-semibold text-gray-800">6</p>
             </div>
           </div>
 
