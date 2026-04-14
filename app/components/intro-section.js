@@ -6,6 +6,15 @@ import Link from "next/link";
 export default function IntroSection() {
   return (
     <section id="about" className="mt-16 w-full bg-white py-20 px-6">
+      <div className="w-full mb-10">
+        <div className="max-w-5xl mx-auto bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-semibold px-6 py-4 rounded-xl shadow-lg text-center animate-pulse">
+          🚨 Open Request: I’m actively looking for a mentor or company who can
+          teach me
+          <span className="font-bold"> Azure / AWS </span>
+          or provide structured training in cloud technologies. If you're
+          offering guidance or opportunities, I’d love to connect!
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Left: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
