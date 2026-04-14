@@ -51,7 +51,7 @@ function HeroSection() {
           {/* GitHub */}
           <div className="mt-6">
             <Link
-              href="https://github.com/sajstartup-design/FuturePath"
+              href="https://github.com/juba0713/Capstone1"
               target="_blank"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90 transition"
             >
