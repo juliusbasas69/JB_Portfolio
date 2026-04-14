@@ -5,20 +5,19 @@ import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 
-export default function JBPortfolioPage() {
+export default function AcadexPage() {
   return (
     <div>
       <div className="w-full py-12 bg-sky-50">
         <HeroSection />
         <DetailsSection />
       </div>
+
       <div className="flex flex-col items-center justify-center py-16 border border-dashed border-gray-300 rounded-xl bg-gray-50">
         <span className="text-4xl mb-3">🖼️</span>
-
         <h3 className="text-lg font-semibold text-gray-700">
           No Screenshots Available
         </h3>
-
         <p className="text-sm text-gray-500 mt-1">
           Screenshots will be added soon.
         </p>
@@ -29,30 +28,26 @@ export default function JBPortfolioPage() {
 
 function HeroSection() {
   return (
-    <section className="max-w-7xl w-full m-auto px-6 mb-16 ">
+    <section className="max-w-7xl w-full m-auto px-6 mb-16">
       <div className="grid md:grid-cols-2 gap-10 items-center">
-        {/* Left Content */}
         <div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
-            JB Portfolio
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">Acadex</h1>
 
           <p className="text-gray-600">
-            A personal portfolio website designed to showcase my projects,
-            technical skills, and experience as a full-stack developer. It
-            provides a clean and interactive interface for exploring my work,
-            including detailed project pages and categorized tech stacks.
+            Acadex is a microservices-based web platform for managing
+            programming assignments with built-in code compilation. It enables
+            students to write and submit code, while professors can review,
+            grade, and manage academic workflows efficiently.
           </p>
 
           <p className="text-gray-500 mt-2 italic text-sm">
-            Built to present my development journey and highlight real-world
-            projects for recruiters and clients.
+            Designed with scalability and performance in mind using event-driven
+            architecture, caching, and system monitoring.
           </p>
 
-          {/* GitHub */}
           <div className="mt-6">
             <Link
-              href="https://github.com/sajstartup-design/FuturePath"
+              href="https://github.com/juliusbasas69/Acadex"
               target="_blank"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90 transition"
             >
@@ -60,30 +55,27 @@ function HeroSection() {
               GitHub
             </Link>
 
-            {/* Badges */}
             <div className="flex flex-wrap gap-2 mt-4">
-              <span className="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
-                Active
+              <span className="px-3 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">
+                Ongoing
               </span>
-              <span className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+              <span className="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
                 Web
               </span>
-              <span className="px-3 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">
-                Personal
+              <span className="px-3 py-1 text-xs rounded-full bg-purple-100 text-purple-800">
+                System Project
               </span>
             </div>
           </div>
         </div>
 
-        {/* Right Image */}
         <div className="relative w-full h-[250px] md:h-[300px]">
           <Image
-            src="/images/projects/futurepath/jp-futurepath.png"
+            src="/images/no-image.png"
             fill
             sizes="512px"
-            preload={true}
-            alt="BorrowWhen Landing Page"
-            className="w-full h-full object-cover rounded-xl shadow-lg"
+            alt="Acadex"
+            className="object-cover rounded-xl shadow-lg"
           />
         </div>
       </div>
@@ -93,14 +85,14 @@ function HeroSection() {
 
 function DetailsSection() {
   const techStack = {
-    Frontend: ["Next.js", "TailwindCSS"],
-    Backend: [],
-    Database: [],
-    Security: [],
-    DevOps: ["Vercel"],
-    Messaging: [],
-    Caching: [],
-    Tools: ["Git", "GitHub"],
+    Frontend: ["Next.js"],
+    Backend: ["Java", "Spring Boot", "Microservices"],
+    Database: ["PostgreSQL"],
+    Security: ["Spring Security", "JWT Authentication"],
+    DevOps: ["Prometheus", "Grafana"],
+    Messaging: ["Kafka"],
+    Caching: ["Redis"],
+    Tools: ["Git"],
     Payment: [],
   };
 
@@ -108,34 +100,34 @@ function DetailsSection() {
 
   return (
     <section className="max-w-7xl w-full m-auto px-6 grid md:grid-cols-3 gap-10">
-      {/* Left */}
+      {/* LEFT */}
       <div className="md:col-span-2">
         <h2 className="text-2xl font-semibold mb-4">
-          ─── ✦ Projects Details ✦ ───
+          ─── ✦ Project Details ✦ ───
         </h2>
 
         <p className="text-gray-600 mb-6">
-          This portfolio serves as a centralized platform to present my
-          development work, including backend systems, full-stack applications,
-          and UI-focused projects. Each project is structured with clear
-          descriptions, features, and technologies used to demonstrate my
-          technical capabilities.
+          Acadex follows a microservices architecture where services are
+          independently deployed and communicate through APIs and event-driven
+          messaging. Kafka is used for asynchronous communication, while Redis
+          improves performance through caching frequently accessed data.
         </p>
 
         <h3 className="text-xl font-semibold mb-3">─── ✦ Key Features ✦ ───</h3>
+
         <ul className="list-disc pl-5 text-gray-600 space-y-2">
-          <li>Responsive and modern UI design</li>
-          <li>Project showcase with detailed pages</li>
-          <li>Expandable tech stack categorization</li>
-          <li>Interactive UI with hover effects</li>
-          <li>Downloadable CV integration</li>
-          <li>Optimized performance using Next.js</li>
-          <li>Deployed and accessible via Vercel</li>
+          <li>Online code editor with compilation support</li>
+          <li>Assignment submission and tracking system</li>
+          <li>Professor dashboard for grading and review</li>
+          <li>Microservices-based scalable architecture</li>
+          <li>Event-driven communication using Kafka</li>
+          <li>Redis caching for performance optimization</li>
+          <li>System monitoring using Prometheus and Grafana</li>
+          <li>Secure authentication and role-based access</li>
         </ul>
       </div>
 
-      {/* Right */}
-      {/* Right Column */}
+      {/* RIGHT */}
       <div>
         <h2 className="text-2xl font-semibold mb-4">─── ✦ Tech Stack ✦ ───</h2>
 
@@ -176,38 +168,33 @@ function DetailsSection() {
         </div>
 
         <h2 className="text-2xl font-semibold mb-4">
-          ─── ✦ Projects Info ✦ ───
+          ─── ✦ Project Info ✦ ───
         </h2>
 
         <div className="space-y-3 text-gray-700">
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Role:</span>
+          <div className="flex justify-between">
+            <span className="font-medium">Role:</span>
             <span>Full Stack Developer</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Type:</span>
-            <span>Personal Portfolio</span>
+
+          <div className="flex justify-between">
+            <span className="font-medium">Type:</span>
+            <span>Web Application</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Architecture:</span>
-            <span>Jamstack (Next.js + Vercel)</span>
+
+          <div className="flex justify-between">
+            <span className="font-medium">Architecture:</span>
+            <span>Microservices</span>
           </div>
 
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Developed:</span>
             <span>2026</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Status:</span>
-            <span>
-              <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
-                Active
-              </span>
-            </span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Deployment:</span>
-            <span>Vercel</span>
+
+          <div className="flex justify-between">
+            <span className="font-medium">Status:</span>
+            <span className="text-yellow-600">Ongoing</span>
           </div>
         </div>
       </div>

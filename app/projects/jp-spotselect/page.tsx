@@ -1,20 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import ScreenshotsSection from "./components/screenshots-section";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 
-export default function BorrowhenPage() {
+export default function SpotSelectPage() {
   return (
     <div>
       <div className="w-full py-12 bg-sky-50">
         <HeroSection />
         <DetailsSection />
       </div>
-      <div>
-        <ScreenshotsSection />
+      <div className="flex flex-col items-center justify-center py-16 border border-dashed border-gray-300 rounded-xl bg-gray-50">
+        <span className="text-4xl mb-3">🖼️</span>
+
+        <h3 className="text-lg font-semibold text-gray-700">
+          No Screenshots Available
+        </h3>
+
+        <p className="text-sm text-gray-500 mt-1">
+          Screenshots will be added soon.
+        </p>
       </div>
     </div>
   );
@@ -27,20 +34,18 @@ function HeroSection() {
         {/* Left Content */}
         <div>
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
-            FuturePath – Academic Guidance Platform
+            SPOTSelect – Project Proposal Platform
           </h1>
 
           <p className="text-gray-600">
-            CareerPath helps users discover their personality type through a
-            RIASEC quiz. Based on the results, it recommends suitable careers
-            and presents a tailored list of degrees, along with universities
-            where each degree is available. Quiz questions are dynamically drawn
-            from relevant academic programs.
+            A web platform for users to submit project proposals, get evaluated
+            by Officers, Managers, and the TBI Board with feedback and
+            notifications.
           </p>
 
           <p className="text-gray-500 mt-2 italic text-sm">
-            This project was completed as a capstone and is available for
-            reference in my GitHub repository.
+            Built to present my development journey and highlight real-world
+            projects for recruiters and clients.
           </p>
 
           {/* GitHub */}
@@ -90,7 +95,7 @@ function DetailsSection() {
     Frontend: ["HTML", "CSS", "JavaScript"],
     Backend: ["Java", "Spring Boot", "Spring MVC", "Thymeleaf"],
     Database: ["PostgreSQL"],
-    Security: [],
+    Security: ["Spring Security", "JWT Authentication"],
     DevOps: [],
     Messaging: [],
     Caching: [],
@@ -109,27 +114,22 @@ function DetailsSection() {
         </h2>
 
         <p className="text-gray-600 mb-6">
-          CareerPath allows users to complete a RIASEC-based personality quiz.
-          Questions are dynamically selected from multiple academic programs
-          based on the user’s RIASEC type. After completion, the system suggests
-          suitable careers, lists relevant degrees, and provides the
-          universities where each degree is offered.
+          SPOTSelect is a web-based project proposal platform that allows users
+          to submit innovative ideas and have them evaluated through a
+          structured approval process. The system supports multiple roles
+          including Officers, Managers, and Board members, each with specific
+          responsibilities in reviewing, approving, or rejecting proposals.
         </p>
 
         <h3 className="text-xl font-semibold mb-3">─── ✦ Key Features ✦ ───</h3>
-        <ul className="list-disc pl-5 text-gray-600 space-y-2">
-          <li>Dynamic RIASEC personality quiz</li>
-          <li>Quiz questions drawn from relevant academic programs</li>
-          <li>Personalized career recommendations</li>
-          <li>List of degrees with universities where they are available</li>
-          <li>User-friendly interface with real-time feedback</li>
-          <li>Result summary and export options</li>
-          <li>Mobile-friendly responsive design</li>
-          <li>
-            Push notifications to inform all users of updates or announcements
-          </li>
-          <li>Immediate feedback after completing assessments</li>
-        </ul>
+        <li>Project proposal submission system</li>
+        <li>Multi-level approval workflow (Officer, Manager, Board)</li>
+        <li>Role-based access control for different user types</li>
+        <li>Status tracking for submitted proposals</li>
+        <li>Feedback and evaluation system</li>
+        <li>Notification system for updates and decisions</li>
+        <li>Organized dashboard for managing proposals</li>
+        <li>Automatic certificate generation for approved proposals</li>
       </div>
 
       {/* Right */}
@@ -182,10 +182,12 @@ function DetailsSection() {
             <span className="font-medium text-gray-800">Role:</span>
             <span>Full Stack Developer</span>
           </div>
+
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Type:</span>
             <span>Web Application</span>
           </div>
+
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Architecture:</span>
             <span>Monolithic (Spring MVC)</span>
@@ -193,20 +195,15 @@ function DetailsSection() {
 
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Developed:</span>
-            <span>2025</span>
+            <span>2024</span>
           </div>
+
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Status:</span>
             <span>
               <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
                 Defended
               </span>
-            </span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Availability:</span>
-            <span className="italic text-gray-500">
-              Reference only (GitHub)
             </span>
           </div>
         </div>

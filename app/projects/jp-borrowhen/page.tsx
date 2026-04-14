@@ -56,7 +56,7 @@ function HeroSection() {
             {/* Badges */}
             <div className="flex flex-wrap gap-2 mt-4">
               <span className="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
-                Completed
+                Defended
               </span>
               <span className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
                 Web
@@ -86,14 +86,18 @@ function HeroSection() {
 
 function DetailsSection() {
   const techStack = {
-    Languages: ["Java", "JavaScript"],
-    Web: ["HTML", "CSS"],
-    Backend: ["Spring MVC", "Spring Boot", "Thymeleaf"],
+    Frontend: ["HTML", "CSS", "JavaScript"],
+    Backend: ["Java", "Spring Boot", "Spring MVC", "Thymeleaf"],
     Database: ["PostgreSQL"],
-    Tools: ["Git", "Stripe", "SMTP"],
+    Security: [],
+    DevOps: [],
+    Messaging: [],
+    Caching: [],
+    Tools: ["Git", "SMTP"],
+    Payment: ["Stripe"],
   };
 
-  const [openCategory, setOpenCategory] = useState(null);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
 
   return (
     <section className="max-w-7xl w-full m-auto px-6 grid md:grid-cols-3 gap-10">
@@ -128,37 +132,39 @@ function DetailsSection() {
         <h2 className="text-2xl font-semibold mb-4">─── ✦ Tech Stack ✦ ───</h2>
 
         <div className="space-y-3 mb-6">
-          {Object.entries(techStack).map(([category, items]) => (
-            <div
-              key={category}
-              className="shadow-md rounded-lg overflow-hidden"
-            >
-              {/* Header */}
-              <button
-                onClick={() =>
-                  setOpenCategory(openCategory === category ? null : category)
-                }
-                className="w-full flex justify-between text-sm items-center px-2 py-2 bg-gray-100 hover:bg-gray-200 transition cursor-pointer"
+          {Object.entries(techStack)
+            .filter(([_, items]) => items.length > 0) // 👈 skip empty categories
+            .map(([category, items]) => (
+              <div
+                key={category}
+                className="shadow-md rounded-lg overflow-hidden"
               >
-                <span className="font-medium">{category}</span>
-                <span>{openCategory === category ? "−" : "+"}</span>
-              </button>
+                {/* Header */}
+                <button
+                  onClick={() =>
+                    setOpenCategory(openCategory === category ? null : category)
+                  }
+                  className="w-full flex justify-between text-sm items-center px-2 py-2 bg-gray-100 hover:bg-gray-200 transition cursor-pointer"
+                >
+                  <span className="font-medium">{category}</span>
+                  <span>{openCategory === category ? "−" : "+"}</span>
+                </button>
 
-              {/* Content */}
-              {openCategory === category && (
-                <div className="flex flex-wrap gap-2 p-3 bg-white">
-                  {items.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+                {/* Content */}
+                {openCategory === category && (
+                  <div className="flex flex-wrap gap-2 p-3 bg-white">
+                    {items.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
         </div>
 
         <h2 className="text-2xl font-semibold mb-4">
@@ -173,6 +179,15 @@ function DetailsSection() {
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Type:</span>
             <span>Web Application</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-gray-800">Architecture:</span>
+            <span>Monolithic (Spring MVC)</span>
+          </div>
+
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-gray-800">Developed:</span>
+            <span>2025</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Status:</span>

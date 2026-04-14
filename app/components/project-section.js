@@ -24,13 +24,13 @@ export default function ProjectsSection() {
       description:
         "Acadex is a web-based platform for managing programming assignments with built-in code compilation. Key Features: Online code editor with integrated compiler Assignment submission and tracking Professor dashboard for reviewing and grading Secure user authentication Organized academic workflow managements",
       tech: "Next.js, Springboot, Java, Microservices,",
-      image: "/images/no-image.png",
+      image: "/images/projects/acadex/jpp-acadex.png",
       badges: [
         { label: "Ongoing", color: "bg-yellow-100 text-yellow-800" },
         { label: "Personal", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
-      slug: "jp-portfolio",
+      slug: "jp-acadex",
     },
     {
       name: "BorrowWhen – Item Lending Platform",
@@ -63,13 +63,13 @@ export default function ProjectsSection() {
       description:
         "A web platform for users to submit project proposals, get evaluated by Officers, Managers, and the TBI Board with feedback and notifications.",
       tech: "Java, Spring Boot, JavaScript, HTML, CSS, Thymeleaf, PostgreSQL",
-      image: "/images/no-image.png",
+      image: "/images/projects/spotselect/jpp-spotselect.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
       ],
       type: "web",
-      slug: "spotselect",
+      slug: "jp-spotselect",
     },
     {
       name: "ServiceConnect – Service Booking Platform",
@@ -121,8 +121,8 @@ export default function ProjectsSection() {
                     src={project.image}
                     alt={project.name}
                     fill
-                    sizes="256px"
-                    className="object-cover rounded-2xl"
+                    sizes="1080px"
+                    className="object-cover rounded-t-2xl"
                   />
                 </div>
 
