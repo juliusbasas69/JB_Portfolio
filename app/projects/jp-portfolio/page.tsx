@@ -197,13 +197,9 @@ function DetailsSection() {
             <span className="font-medium text-gray-800">Developed:</span>
             <span>2026</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="font-medium text-gray-800">Status:</span>
-            <span>
-              <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
-                Active
-              </span>
-            </span>
+          <div className="flex justify-between">
+            <span className="font-medium">Status:</span>
+            <span className="text-green-600">Active</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-800">Deployment:</span>
