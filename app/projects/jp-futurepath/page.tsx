@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import ScreenshotsSection from "./components/screenshots-section";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { useState } from "react";
 
 export default function BorrowhenPage() {
   return (
@@ -23,7 +26,7 @@ function HeroSection() {
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {/* Left Content */}
         <div>
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">
             FuturePath – Academic Guidance Platform
           </h1>
 
@@ -83,11 +86,23 @@ function HeroSection() {
 }
 
 function DetailsSection() {
+  const techStack = {
+    Languages: ["Java", "JavaScript"],
+    Web: ["HTML", "CSS"],
+    Backend: ["Spring MVC", "Spring Boot", "Thymeleaf"],
+    Database: ["PostgreSQL"],
+    Tools: ["Git"],
+  };
+
+  const [openCategory, setOpenCategory] = useState(null);
+
   return (
     <section className="max-w-7xl w-full m-auto px-6 grid md:grid-cols-3 gap-10">
       {/* Left */}
       <div className="md:col-span-2">
-        <h2 className="text-2xl font-semibold mb-4">Project Details</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          ─── ✦ Projects Details ✦ ───
+        </h2>
 
         <p className="text-gray-600 mb-6">
           CareerPath allows users to complete a RIASEC-based personality quiz.
@@ -97,7 +112,7 @@ function DetailsSection() {
           universities where each degree is offered.
         </p>
 
-        <h3 className="text-xl font-semibold mb-3">Key Features</h3>
+        <h3 className="text-xl font-semibold mb-3">─── ✦ Key Features ✦ ───</h3>
         <ul className="list-disc pl-5 text-gray-600 space-y-2">
           <li>Dynamic RIASEC personality quiz</li>
           <li>Quiz questions drawn from relevant academic programs</li>
@@ -116,29 +131,45 @@ function DetailsSection() {
       {/* Right */}
       {/* Right Column */}
       <div>
-        <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
+        <h2 className="text-2xl font-semibold mb-4">─── ✦ Tech Stack ✦ ───</h2>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          {[
-            "Java",
-            "Spring Boot",
-            "PostgreSQL",
-            "Thymeleaf",
-            "TailwindCSS",
-            "JavaScript",
-            "HTML",
-            "CSS",
-          ].map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full"
+        <div className="space-y-3 mb-6">
+          {Object.entries(techStack).map(([category, items]) => (
+            <div
+              key={category}
+              className="shadow-md rounded-lg overflow-hidden"
             >
-              {tech}
-            </span>
+              {/* Header */}
+              <button
+                onClick={() =>
+                  setOpenCategory(openCategory === category ? null : category)
+                }
+                className="w-full flex justify-between text-sm items-center px-2 py-2 bg-gray-100 hover:bg-gray-200 transition cursor-pointer"
+              >
+                <span className="font-medium">{category}</span>
+                <span>{openCategory === category ? "−" : "+"}</span>
+              </button>
+
+              {/* Content */}
+              {openCategory === category && (
+                <div className="flex flex-wrap gap-2 p-3 bg-white">
+                  {items.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
-        <h2 className="text-2xl font-semibold mb-4">Project Info</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          ─── ✦ Projects Info ✦ ───
+        </h2>
 
         <div className="space-y-3 text-gray-700">
           <div className="flex justify-between items-center">
