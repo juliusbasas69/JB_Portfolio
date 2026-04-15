@@ -38,6 +38,11 @@ export default function TechStackSection() {
       category: "Language",
       logo: "/images/logo/logo-python.png",
     },
+    {
+      name: "Typescript",
+      category: "Language",
+      logo: "/images/logo/logo-typescript.png",
+    },
 
     {
       name: "React.js",

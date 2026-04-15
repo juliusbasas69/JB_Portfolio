@@ -95,9 +95,10 @@ export default function ProjectsPage() {
             Updating
           </span>
         </h2>
-        <p className="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-10 ">
-          Personal, academic, and freelance projects built for clients and skill
-          development.
+        <p className="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-10">
+          Personal and academic projects built for learning and skill
+          development. <br /> Projects from previous work experience are not
+          included in this section.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
