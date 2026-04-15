@@ -1,7 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const linkClass = (path) =>
+    `relative transition ${
+      pathname === path ? "text-[#1099de] font-medium" : "hover:text-[#1099de]"
+    }`;
+
   return (
     <div className="w-full bg-sky-50">
       <header className="flex flex-row justify-between p-4 max-w-7xl mx-auto w-full">
@@ -18,10 +28,26 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-8 text-sm font-medium">
-          <Link href="/" className="hover:text-blue-600 transition">
+          <Link href="/" className={linkClass("/")}>
             Home
+            {pathname === "/" && (
+              <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#1099de] rounded-full" />
+            )}
           </Link>
-          <Link href="/tech-journal">Tech Journal</Link>
+
+          <Link href="/projects" className={linkClass("/projects")}>
+            Projects
+            {pathname === "/projects" && (
+              <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#1099de] rounded-full" />
+            )}
+          </Link>
+
+          <Link href="/tech-journal" className={linkClass("/tech-journal")}>
+            Tech Journal
+            {pathname === "/tech-journal" && (
+              <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#1099de] rounded-full" />
+            )}
+          </Link>
 
           <Link
             href="#contact"

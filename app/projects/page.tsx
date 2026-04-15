@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGlobe, FaAndroid, FaApple } from "react-icons/fa";
 
-export default function ProjectsSection() {
+export default function ProjectsPage() {
   const projects = [
     {
       name: "JB Portfolio",
@@ -189,19 +189,6 @@ export default function ProjectsSection() {
               </div>
             </Link>
           ))}
-        </div>
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/projects"
-            className="group relative inline-flex items-center gap-2 rounded-full bg-[#1099de] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#0e86c3] hover:shadow-xl active:scale-[0.98]"
-          >
-            View More Projects
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-            {/* subtle glow */}
-            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 bg-white transition"></span>
-          </Link>
         </div>
       </div>
     </section>

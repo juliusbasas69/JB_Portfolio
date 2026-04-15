@@ -53,10 +53,53 @@ export default function RedisIntegrationSpringboot() {
             </ul>
           </div>
 
-          {/* STEP 1 */}
           <div>
             <h3 className="font-semibold text-gray-800">
-              Step 1: Add Dependency
+              Step 1: Run Redis using Docker
+            </h3>
+
+            <p className="mt-2 text-gray-600">
+              Before integrating Redis in Spring Boot, we first run a Redis
+              container using Docker Compose.
+            </p>
+
+            <h4 className="mt-4 font-medium text-gray-700">
+              Create docker-compose.yml
+            </h4>
+
+            <pre className="mt-2 bg-gray-100 p-3 rounded-md text-xs overflow-x-auto">
+              {`services:
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:`}
+            </pre>
+
+            <h4 className="mt-4 font-medium text-gray-700">
+              Run Docker Compose
+            </h4>
+
+            <pre className="mt-2 bg-gray-100 p-3 rounded-md text-xs overflow-x-auto">
+              {`docker compose up -d`}
+            </pre>
+
+            <ul className="list-disc ml-5 mt-3 space-y-1 text-gray-600">
+              <li>Starts Redis container in background</li>
+              <li>Exposes Redis on port 6379</li>
+              <li>Persists data using Docker volume</li>
+            </ul>
+          </div>
+
+          {/* STEP 2 */}
+          <div>
+            <h3 className="font-semibold text-gray-800">
+              Step 2: Add Dependency
             </h3>
 
             <pre className="mt-2 bg-gray-100 p-3 rounded-md text-xs overflow-x-auto">
@@ -72,10 +115,10 @@ export default function RedisIntegrationSpringboot() {
             </pre>
           </div>
 
-          {/* STEP 2 */}
+          {/* STEP 3 */}
           <div>
             <h3 className="font-semibold text-gray-800">
-              Step 2: Redis Configuration
+              Step 3: Redis Configuration
             </h3>
 
             <pre className="mt-2 bg-gray-100 p-3 rounded-md text-xs overflow-x-auto">
@@ -102,10 +145,10 @@ public class RedisConfig {
             </pre>
           </div>
 
-          {/* STEP 3 */}
+          {/* STEP 4 */}
           <div>
             <h3 className="font-semibold text-gray-800">
-              Step 3: Using @Cacheable
+              Step 4: Using @Cacheable
             </h3>
 
             <pre className="mt-2 bg-gray-100 p-3 rounded-md text-xs overflow-x-auto">
@@ -118,10 +161,10 @@ public UserEntity findUserByEmail(String email) {
             </pre>
           </div>
 
-          {/* STEP 4 */}
+          {/* STEP 5 */}
           <div>
             <h3 className="font-semibold text-gray-800">
-              Step 4: How to Test It
+              Step 5: How to Test It
             </h3>
 
             <ul className="list-disc ml-5 mt-2 space-y-1">
