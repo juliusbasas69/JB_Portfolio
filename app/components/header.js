@@ -21,23 +21,7 @@ export default function Header() {
           <Link href="/" className="hover:text-blue-600 transition">
             Home
           </Link>
-          <Link
-            href="#about"
-            scroll={true}
-            className="hover:text-blue-600 transition"
-          >
-            About Me
-          </Link>
-          <Link
-            href="#project"
-            scroll={true}
-            className="hover:text-blue-600 transition"
-          >
-            Project
-          </Link>
-          <Link href="#contact" className="hover:text-blue-600 transition">
-            Contact
-          </Link>
+          <Link href="/tech-journal">Tech Journal</Link>
 
           <Link
             href="#contact"
