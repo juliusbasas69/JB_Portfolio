@@ -22,6 +22,12 @@ export default function ReferenceSection() {
       role: "Custom Software Engineer",
       relationship: "Former Colleague",
     },
+    {
+      name: "Alier Torrenueva",
+      company: "IBM",
+      role: "Java Developer",
+      relationship: "Former Colleague",
+    },
   ];
 
   return (
@@ -36,7 +42,7 @@ export default function ReferenceSection() {
         </p>
 
         {/* 3 columns grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {references.map((ref, i) => (
             <div
               key={i}
