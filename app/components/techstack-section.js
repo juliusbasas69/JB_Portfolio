@@ -122,6 +122,12 @@ export default function TechStackSection() {
       logo: "/images/logo/logo-mysql.png",
       years: "1 yr",
     },
+    {
+      name: "Microsoft Server SQL",
+      category: "Database",
+      logo: "/images/logo/logo-mssql.png",
+      years: "1 yr",
+    },
 
     {
       name: "Redis",
