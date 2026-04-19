@@ -19,19 +19,19 @@ export default function ProjectsSection() {
       type: "web",
       slug: "jp-portfolio",
     },
-    {
-      name: "Acadex",
-      description:
-        "Acadex is a web-based platform for managing programming assignments with built-in code compilation. Key Features: Online code editor with integrated compiler Assignment submission and tracking Professor dashboard for reviewing and grading Secure user authentication Organized academic workflow managements",
-      tech: "Next.js, Springboot, Java, Microservices,",
-      image: "/images/projects/acadex/jpp-acadex.png",
-      badges: [
-        { label: "Ongoing", color: "bg-yellow-100 text-yellow-800" },
-        { label: "Personal", color: "bg-purple-100 text-purple-800" },
-      ],
-      type: "web",
-      slug: "jp-acadex",
-    },
+    // {
+    //   name: "Acadex",
+    //   description:
+    //     "Acadex is a web-based platform for managing programming assignments with built-in code compilation. Key Features: Online code editor with integrated compiler Assignment submission and tracking Professor dashboard for reviewing and grading Secure user authentication Organized academic workflow managements",
+    //   tech: "Next.js, Springboot, Java, Microservices,",
+    //   image: "/images/projects/acadex/jpp-acadex.png",
+    //   badges: [
+    //     { label: "Ongoing", color: "bg-yellow-100 text-yellow-800" },
+    //     { label: "Personal", color: "bg-purple-100 text-purple-800" },
+    //   ],
+    //   type: "web",
+    //   slug: "jp-acadex",
+    // },
     {
       name: "BorrowWhen – Item Lending Platform",
       description:
