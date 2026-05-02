@@ -11,7 +11,7 @@ export default function ProjectsSection() {
       description:
         "A personal portfolio website showcasing projects and skills.",
       tech: "Next.js, TailwindCSS",
-      image: "/images/projects/portfolio/jp-portfolio.png",
+      image: "/images/projects/images/pj-1.png",
       badges: [
         { label: "Live", color: "bg-green-100 text-green-800" },
         { label: "Personal", color: "bg-purple-100 text-purple-800" },
@@ -19,25 +19,25 @@ export default function ProjectsSection() {
       type: "web",
       slug: "jp-portfolio",
     },
-    // {
-    //   name: "Acadex",
-    //   description:
-    //     "Acadex is a web-based platform for managing programming assignments with built-in code compilation. Key Features: Online code editor with integrated compiler Assignment submission and tracking Professor dashboard for reviewing and grading Secure user authentication Organized academic workflow managements",
-    //   tech: "Next.js, Springboot, Java, Microservices,",
-    //   image: "/images/projects/acadex/jpp-acadex.png",
-    //   badges: [
-    //     { label: "Ongoing", color: "bg-yellow-100 text-yellow-800" },
-    //     { label: "Personal", color: "bg-purple-100 text-purple-800" },
-    //   ],
-    //   type: "web",
-    //   slug: "jp-acadex",
-    // },
+    {
+      name: "Acadex",
+      description:
+        "Acadex is a web-based platform for managing programming assignments with built-in code compilation. Key Features: Online code editor with integrated compiler Assignment submission and tracking Professor dashboard for reviewing and grading Secure user authentication Organized academic workflow managements",
+      tech: "Next.js, Springboot, Java,",
+      image: "/images/projects/images/pj-2.png",
+      badges: [
+        { label: "Ongoing", color: "bg-yellow-100 text-yellow-800" },
+        { label: "Personal", color: "bg-purple-100 text-purple-800" },
+      ],
+      type: "web",
+      slug: "jp-acadex",
+    },
     {
       name: "BorrowWhen – Item Lending Platform",
       description:
         "Platform to lend and borrow items with payment integration.",
       tech: "Java, Spring Boot, JavaScript, HTML, Tailwind CSS, PostgreSQL, Stripe(Payment)",
-      image: "/images/projects/borrowhen/jp-borrowhen.png",
+      image: "/images/projects/images/pj-3.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
@@ -50,7 +50,7 @@ export default function ProjectsSection() {
       description:
         "Helps students plan their academic path and monitor progress.",
       tech: "Java, Spring Boot, JavaScript, HTML, Tailwind CSS, PostgreSQL",
-      image: "/images/projects/futurepath/jp-futurepath.png",
+      image: "/images/projects/images/pj-4.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
@@ -63,7 +63,7 @@ export default function ProjectsSection() {
       description:
         "A web platform for users to submit project proposals, get evaluated by Officers, Managers, and the TBI Board with feedback and notifications.",
       tech: "Java, Spring Boot, JavaScript, HTML, CSS, Thymeleaf, PostgreSQL",
-      image: "/images/projects/spotselect/jpp-spotselect.png",
+      image: "/images/projects/images/pj-5.png",
       badges: [
         { label: "Completed", color: "bg-sky-100 text-sky-800" },
         { label: "Capstone", color: "bg-purple-100 text-purple-800" },
@@ -83,6 +83,32 @@ export default function ProjectsSection() {
       ],
       type: ["web", "android"], // updated type to array
       slug: "serviceconnect",
+    },
+    {
+      name: "Enhanced Electrical Lamp with Smart Monitoring System",
+      description:
+        "A thesis-based Arduino project that automates lamp control and provides real-time monitoring of electrical usage, lamp status, and system performance.",
+      tech: "Arduino, C++, Sensors, Relay Module, LCD, Electrical Wiring",
+      image: "/images/projects/images/pj-7.png",
+      badges: [
+        { label: "Completed", color: "bg-sky-100 text-sky-800" },
+        { label: "Thesis", color: "bg-purple-100 text-purple-800" },
+      ],
+      type: ["hardware", "iot"],
+      slug: "jp-eel",
+    },
+    {
+      name: "Secure Contactor Access Control System",
+      description:
+        "A hardware-based security and control system designed for safe activation of a 3-phase contactor using multi-factor authentication. The system ensures that electrical power can only be activated after successful password verification and registered fingerprint authentication. It also includes an admin mode for managing fingerprint access control.",
+      tech: "Arduino Mega, SIM800L Module, Buck Converter, LED Display, Relay Module (4-pin), Latching Relay (8-pin), Contactor, Keypad (Arduino), Biometric Fingerprint Sensor, 3-phase MCB, Single RCBO, Buzzer, Push Button",
+      image: "/images/projects/images/pj-8.png",
+      badges: [
+        { label: "Completed", color: "bg-sky-100 text-sky-800" },
+        { label: "Thesis", color: "bg-purple-100 text-purple-800" },
+      ],
+      type: ["hardware", "iot"],
+      slug: "jp-eel2",
     },
   ];
 
@@ -179,6 +205,20 @@ export default function ProjectsSection() {
                           <>
                             <FaApple />
                             <span>iOS</span>
+                          </>
+                        )}
+
+                        {t === "hardware" && (
+                          <>
+                            <span>🔌</span>
+                            <span>Hardware</span>
+                          </>
+                        )}
+
+                        {t === "iot" && (
+                          <>
+                            <span>📡</span>
+                            <span>IoT</span>
                           </>
                         )}
 

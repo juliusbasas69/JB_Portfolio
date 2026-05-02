@@ -1,0 +1,757 @@
+// ================= LIBRARIES =================
+#include <Adafruit_Fingerprint.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <Keypad.h>
+#include <SoftwareSerial.h>
+
+#define MAX_FINGERPRINTS 200
+
+// ================= SERIAL =================
+#define fingerSerial Serial1
+//#define gsmSerial Serial2
+SoftwareSerial sim(16,17);
+
+int _timeout;
+String _buffer;
+
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&fingerSerial);
+LiquidCrystal_I2C lcd(0x27, 20, 4);
+
+// ================= PINS =================
+//const int CONTACTOR_RELAY     = 3;  
+const int alertRelayPin = 3;  
+const int ACTIVATE_BTN  = A2;
+const int STOP_BTN      = A3;
+const int  RED_RELAY = 12;
+const int GREEN_RELAY = 2;
+
+// ================= GSM =================
+String phoneNumber = "+639278658388";
+
+// ================= KEYPAD =================
+const byte ROWS = 4, COLS = 4;
+char keys[ROWS][COLS] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
+};
+
+byte rowPins[ROWS] = {4, 5, 6, 7};
+byte colPins[COLS] = {8, 9, 10, 11};
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+// ================= PASSWORDS =================
+String USER_PASSWORD      = "1234";
+String ADMIN_PASSWORD     = "9999";
+String EMERGENCY_PASSWORD = "1968";
+
+String PASSWORD_INPUT = "";
+
+// ================= STATES =================
+bool lastSystemActive = false;
+bool systemActive = false;
+bool hasLoggedIn = false;
+bool loginJustCompleted = false;
+
+bool isAuthorized         = false;
+bool isAdmin            = false;
+bool emergencyMode      = false;
+
+int authenticatedUserId = -1;
+bool waitingFingerprint = false;
+
+unsigned long dPressTime = 0;
+bool dHolding = false;
+
+char currentKey = NO_KEY;
+
+bool lastActivateState = HIGH;
+bool lastStopState     = HIGH;
+
+unsigned long lastDebounceTimeActivate = 0;
+unsigned long lastDebounceTimeStop     = 0;
+
+const unsigned long debounceDelay = 50;
+unsigned long activatePressTime = 0;
+unsigned long stopPressTime = 0;
+
+bool activateHolding = false;
+bool stopHolding = false;
+
+const unsigned long holdTime = 3000; // 3 seconds
+
+bool unauthorizedActive = false;
+unsigned long unauthorizedStart  = 0;
+
+// ================= SECURITY =================
+int wrongMax = 3;
+int wrongPassCount   = 0;
+int wrongFingerCount = 0;
+
+// ================= LCD HELPERS =================
+void printCenter(int row, const String &text) {
+  int width = 20;
+
+  String output = text;
+
+  // Trim text if it's longer than the screen
+  if (output.length() > width) {
+    output = output.substring(0, width);
+  }
+
+  int col = (width - output.length()) / 2;
+  if (col < 0) col = 0;
+
+  // Clear the row
+  lcd.setCursor(0, row);
+  for (int i = 0; i < width; i++) {
+    lcd.print(' ');
+  }
+
+  // Print centered text
+  lcd.setCursor(col, row);
+  lcd.print(output);
+}
+
+void resetSystem(){
+  isAuthorized          = false;
+  isAdmin             = false;
+  emergencyMode       = false;
+  hasLoggedIn = false;
+  waitingFingerprint = false;
+  systemActive = false;
+
+  PASSWORD_INPUT               = "";
+
+  authenticatedUserId        = -1;
+  wrongPassCount      = 0;
+  wrongFingerCount    = 0;
+
+  //digitalWrite(CONTACTOR_RELAY, HIGH); 
+  digitalWrite(alertRelayPin, HIGH);  
+
+  lcd.clear();
+  printCenter(1, "ENTER PASSWORD");
+}
+
+void sendSMS(String msg) {
+
+   sim.println("AT+CMGF=1");
+   delay(200);
+   sim.println("AT+CMGS=\"" + phoneNumber + "\"r");
+   delay(200);
+   sim.println(msg);
+   delay(100);
+   sim.println((char)26);
+   delay(200);
+   _buffer = _readSerial();
+}
+
+String _readSerial(){
+  _timeout = 0;
+
+  while(!sim.available() && _timeout < 12000){
+    delay(13);
+    _timeout++;
+  }
+
+  if(sim.available()){
+    return sim.readString();
+  }
+}
+
+// ================= ALARM =================
+void triggerUnauthorized() {
+  unauthorizedActive = true;
+  unauthorizedStart  = millis();
+
+  lcd.backlight();
+
+  lcd.clear();
+  printCenter(1, "UNAUTHORIZED ACCESS");
+  printCenter(2, "SECURITY ALERT");
+
+  digitalWrite(alertRelayPin, LOW); 
+
+}
+
+void printCenteredMaskedPassword(int row, String input) {
+  int width = 20;
+
+  String masked = "";
+  for (int i = 0; i < input.length(); i++) {
+    masked += "*";
+  }
+
+  int col = (width - masked.length()) / 2;
+  if (col < 0) col = 0;
+
+  lcd.setCursor(0, row);
+  lcd.print("                    "); // clear row
+
+  lcd.setCursor(col, row);
+  lcd.print(masked);
+}
+
+void setup() {
+
+  // ================= RELAYS (SAFE FIRST) =================
+  pinMode(alertRelayPin, OUTPUT);
+  pinMode(RED_RELAY, OUTPUT);
+  pinMode(GREEN_RELAY, OUTPUT);
+
+  // FORCE SAFE STATE IMMEDIATELY (ACTIVE LOW RELAYS)
+  digitalWrite(alertRelayPin, HIGH);
+  digitalWrite(RED_RELAY, HIGH);
+  digitalWrite(GREEN_RELAY, HIGH);
+
+  delay(200); // relay stabilization
+
+  // ================= INPUTS =================
+  pinMode(ACTIVATE_BTN, INPUT_PULLUP);
+  pinMode(STOP_BTN, INPUT_PULLUP);
+
+  // ================= LCD =================
+  lcd.begin();
+  lcd.backlight();
+
+  lcd.clear();
+  printCenter(1, "SYSTEM");
+  printCenter(2, "INITIALIZING");
+  delay(1500);
+
+  lcd.clear();
+  printCenter(1, "ENTER PASSWORD");
+
+  // ================= SERIAL =================
+  Serial.begin(9600);
+  fingerSerial.begin(57600);
+  _buffer.reserve(50);
+  sim.begin(9600);
+
+  // flush serial safely
+  while (Serial.available()) {
+    Serial.write(Serial.read());
+  }
+}
+
+void passwordListener() {
+  char key = keypad.getKey();
+  if (!key) return;
+
+  // ======================
+  // CLEAR INPUT
+  // ======================
+  if (key == '*') {
+    PASSWORD_INPUT = "";
+    lcd.clear();
+    printCenter(1, "ENTER PASSWORD");
+    return;
+  }
+
+  // ======================
+  // SUBMIT PASSWORD
+  // ======================
+  if (key == '#') {
+
+    // ----------------------
+    // CORRECT PASSWORD
+    // ----------------------
+    if (PASSWORD_INPUT == USER_PASSWORD) {
+
+      wrongPassCount = 0;
+
+      waitingFingerprint = true;
+      isAuthorized = true; 
+
+      lcd.clear();
+      printCenter(1, "ACCESS VERIFIED");
+      printCenter(2, "SCAN FINGER");
+
+    }else if(PASSWORD_INPUT == ADMIN_PASSWORD){
+
+      wrongPassCount = 0;
+
+      waitingFingerprint = true;
+      isAdmin = true;
+
+      
+      lcd.clear();
+      printCenter(1, "ACCESS VERIFIED");
+      printCenter(2, "SCAN FINGER");
+    }
+
+    // ----------------------
+    // WRONG PASSWORD
+    // ----------------------
+    else {
+
+      wrongPassCount++;
+
+      lcd.clear();
+      printCenter(1, "ACCESS DENIED");
+      delay(1200);
+
+      lcd.clear();
+      printCenter(1, "ENTER PASSWORD");
+    }
+
+    if(wrongPassCount >= wrongMax){
+      triggerUnauthorized();
+    }
+
+    PASSWORD_INPUT = "";
+    return;
+  }
+
+  // ======================
+  // BUILD INPUT
+  // ======================
+  if (PASSWORD_INPUT.length() < 10 &&
+      key != 'A' && key != 'B' && key != 'C' && key != 'D') {
+
+    PASSWORD_INPUT += key;
+
+    printCenteredMaskedPassword(2, PASSWORD_INPUT);
+  }
+}
+
+void showSystemStatus(bool systemActive) {
+
+  digitalWrite(GREEN_RELAY, HIGH);
+  digitalWrite(RED_RELAY, HIGH);
+
+  lcd.begin();
+  lcd.backlight();
+  delay(1000);
+
+  lcd.clear();
+  printCenter(0, "===SYSTEM READY===");
+
+  lcd.setCursor(2, 2);
+  if (systemActive) {
+    lcd.print("STATUS: ACTIVE ");
+  } else {
+    lcd.print("STATUS: STANDBY");
+  }
+}
+
+void updateStatusLights(bool systemActive) {
+
+  if (systemActive) {
+    // GREEN ON, RED OFF
+    digitalWrite(GREEN_RELAY, LOW);
+    digitalWrite(RED_RELAY, HIGH);
+  } else {
+    // GREEN OFF, RED ON
+    digitalWrite(GREEN_RELAY, HIGH);
+    digitalWrite(RED_RELAY, LOW);
+  }
+}
+
+unsigned long buttonCooldown = 0;
+const unsigned long lockTime = 5000;
+
+void loop() {
+
+  if(sim.available() > 0){
+    Serial.print(sim.read());
+  }
+
+  if (unauthorizedActive) {
+    if (millis() - unauthorizedStart >= 10000) {
+      unauthorizedActive = false;
+      digitalWrite(alertRelayPin, HIGH);  // Buzzer OFF
+
+      lcd.begin();
+      lcd.backlight();
+
+      delay(500);
+
+      resetSystem();
+      //sendSMS("ALERT: Unauthorized access detected!");
+    }
+    return;  // Block ALL input during alarm
+  }
+
+  if (!hasLoggedIn && !(isAuthorized || isAdmin)) {
+    passwordListener();
+    delay(50);
+    return;
+  }
+
+  if (waitingFingerprint && !hasLoggedIn && (isAuthorized || isAdmin)) {
+
+    int p = finger.getImage();
+
+    if (p != FINGERPRINT_OK) {
+      return; // no finger detected → skip rest of loop
+    }
+
+    finger.image2Tz();
+    p = finger.fingerFastSearch();
+
+    if (p == FINGERPRINT_OK) {
+
+      hasLoggedIn = true;
+      waitingFingerprint = false;
+      loginJustCompleted = true;
+
+      authenticatedUserId = finger.fingerID;
+
+      if (isAdmin) {
+        adminMenu();
+        return;
+      }
+
+      lcd.clear();
+      printCenter(1, "===ACCESS GRANTED===");
+      printCenter(2, "USER ID: " + String(authenticatedUserId));
+      delay(1500);
+
+      lcd.clear();
+      printCenter(1, "WELCOME USER");
+      delay(1500);
+
+      lcd.clear();
+      printCenter(0, "===SYSTEM READY===");
+      lcd.setCursor(2, 2);
+      lcd.print("GREEN : ACTIVE");
+      lcd.setCursor(2, 23);
+      lcd.print("RED   : STANDBY");
+
+      updateStatusLights(false);
+    
+      return;
+    }
+
+    wrongFingerCount++;
+
+    lcd.clear();
+    printCenter(1, "NO MATCH");
+    printCenter(2, "TRY: " + String(wrongFingerCount) + " / " + String(wrongMax));
+    delay(1000);
+    
+    if(wrongFingerCount >= wrongMax){
+      triggerUnauthorized();
+    }
+
+    return;
+  }
+
+  if (hasLoggedIn) {
+
+    if (loginJustCompleted) {
+      loginJustCompleted = false;
+
+      lastActivateState = digitalRead(ACTIVATE_BTN);
+      lastStopState     = digitalRead(STOP_BTN);
+
+      return;
+    }
+
+    bool activateState = digitalRead(ACTIVATE_BTN);
+    bool stopState     = digitalRead(STOP_BTN);
+    unsigned long now = millis();
+
+    // =========================
+    // GREEN BUTTON
+    // =========================
+    if (lastActivateState == HIGH && activateState == LOW) {
+
+      if (now > buttonCooldown) {
+
+        if (!systemActive) {
+          systemActive = true;
+          Serial.println("SYSTEM ACTIVE");
+          updateStatusLights(systemActive);
+        }
+
+        buttonCooldown = now + lockTime;
+      }
+    }
+
+    // =========================
+    // RED BUTTON
+    // =========================
+    if (lastStopState == HIGH && stopState == LOW) {
+
+      if (now > buttonCooldown) {
+
+        if (systemActive) {
+          systemActive = false;
+          Serial.println("SYSTEM STOPPED");
+          updateStatusLights(systemActive);
+        }
+
+        buttonCooldown = now + lockTime;
+      }
+    }
+
+    lastActivateState = activateState;
+    lastStopState     = stopState;
+  }
+
+  if (authenticatedUserId != -1) {
+    // Serial.println("PLEASE LOGOUT");
+    int p = finger.getImage();
+    if (p == FINGERPRINT_OK) {
+      // Serial.println("PLEASE LOGOUT - 1");
+      finger.image2Tz();
+      p = finger.fingerFastSearch();
+
+      if (p == FINGERPRINT_OK && finger.fingerID == authenticatedUserId) {
+        // Serial.println("PLEASE LOGOUT - 2");
+        digitalWrite(GREEN_RELAY, HIGH);
+        digitalWrite(RED_RELAY, HIGH);
+
+        lcd.begin();
+        lcd.backlight();
+
+        delay(1500);
+        lcd.clear();
+        printCenter(1, "LOGOUT SUCCESS");
+        printCenter(2, "SYSTEM STOPPED");
+
+        delay(1500);
+
+        resetSystem();
+
+      } else if (p == FINGERPRINT_OK) {
+
+        lcd.begin();
+        lcd.backlight();
+
+        delay(1500);
+
+        lcd.clear();
+        printCenter(1, "WRONG USER");
+        printCenter(2, "USE REGISTERED FINGER");
+        delay(1500);
+
+        lcd.clear();
+        printCenter(0, "=== SYSTEM ===");
+        lcd.setCursor(2, 2);
+        lcd.print("GREEN : ACTIVE");
+        lcd.setCursor(2, 3);
+        lcd.print("RED   : STANDBY");
+      }
+    }
+  }
+
+  Serial.println("SYSTEM RUNNING");
+  delay(50);
+}
+
+// ================= ADMIN MENU =================
+void adminMenu() {
+
+  lcd.clear();
+  printCenter(0, "ADMIN MENU");
+  printCenter(2, "A=Enroll B=Delete");
+  printCenter(3, "#=Exit");
+
+  int lastCount = -1;
+  bool exitMenu = false;
+
+  while (!exitMenu) {
+
+    char key = keypad.getKey();
+
+    // ================= INPUT =================
+    if (key == 'A') {
+      enrollFingerprint();
+
+      lcd.clear();
+      printCenter(0, "ADMIN MENU");
+      printCenter(2, "A=Enroll B=Delete");
+      printCenter(3, "#=Exit");
+    }
+    else if (key == 'B') {
+      deleteFingerprint();
+
+      lcd.clear();
+      printCenter(0, "ADMIN MENU");
+      printCenter(2, "A=Enroll B=Delete");
+      printCenter(3, "#=Exit");
+    }
+    else if (key == '#') {
+      exitMenu = true;
+      resetSystem();
+      break;
+    }
+
+    // ================= UPDATE COUNT ONLY IF CHANGED =================
+    finger.getTemplateCount();
+
+    if (finger.templateCount != lastCount) {
+      lastCount = finger.templateCount;
+
+      lcd.setCursor(0, 1);
+      lcd.print("                    "); // clear line only
+      lcd.setCursor(0, 1);
+      lcd.print("IDs: ");
+      lcd.print(lastCount);
+      lcd.print("/200");
+    }
+
+    delay(100);
+  }
+}
+
+// ================= ENROLL =================
+void enrollFingerprint() {
+  finger.getTemplateCount();
+  if (finger.templateCount >= MAX_FINGERPRINTS) {
+    lcd.clear();
+    printCenter(1, "Memory Full");
+    delay(1500);
+    return;
+  }
+
+  lcd.clear();
+  printCenter(1, "Enter ID (# confirm)");
+  String idStr = "";
+
+  while (true) {
+    currentKey = keypad.getKey();
+    if (currentKey) {
+      if (currentKey == '#') break;
+      if (currentKey == '*') {
+        if (idStr.length() > 0) {
+          idStr.remove(idStr.length() - 1);
+          lcd.setCursor(idStr.length(), 2);
+          lcd.print(" ");
+          lcd.setCursor(idStr.length(), 2);
+        }
+      } else if (currentKey >= '0' && currentKey <= '9') {
+        if (idStr.length() < 3) {
+          idStr += currentKey;
+          lcd.setCursor(idStr.length() - 1, 2);
+          lcd.print("*");
+        }
+      }
+    }
+  }
+
+  int id = idStr.toInt();
+  if (id < 1 || id > 127) {
+    lcd.clear();
+    printCenter(1, "Invalid ID");
+    printCenter(2, "Use 1-127");
+    delay(1500);
+    return;
+  }
+
+  // First scan
+  lcd.clear();
+  printCenter(1, "Place Finger");
+  printCenter(3, "* = Cancel");
+  bool cancelled = false;
+
+  while (true) {
+    int p = finger.getImage();
+    if (p == FINGERPRINT_OK) break;
+    currentKey = keypad.getKey();
+    if (currentKey == '*') { cancelled = true; break; }
+  }
+  if (cancelled) {
+    lcd.clear(); printCenter(1, "Cancelled"); delay(1500); return;
+  }
+
+  finger.image2Tz(1);
+  lcd.clear();
+  printCenter(1, "Remove Finger");
+  delay(1500);
+  while (finger.getImage() != FINGERPRINT_NOFINGER);
+
+  // Second scan
+  lcd.clear();
+  printCenter(1, "Place Same Finger");
+  printCenter(3, "* = Cancel");
+
+  while (true) {
+    int p = finger.getImage();
+    if (p == FINGERPRINT_OK) break;
+    currentKey = keypad.getKey();
+    if (currentKey == '*') { cancelled = true; break; }
+  }
+  if (cancelled) {
+    lcd.clear(); printCenter(1, "Cancelled"); delay(1500); return;
+  }
+
+  finger.image2Tz(2);
+
+  if (finger.createModel() == FINGERPRINT_OK &&
+      finger.storeModel(id) == FINGERPRINT_OK) {
+    lcd.clear();
+    printCenter(1, "Enroll Success");
+    printCenter(2, "ID: " + String(id));
+    //sendSMS("ENROLL SUCCESS ID " + String(id));
+
+
+    delay(3000);
+    lcd.begin();
+    lcd.backlight();
+    delay(1000);
+    adminMenu();
+  } else {
+    lcd.clear();
+    printCenter(1, "Enroll Failed");
+    sendSMS("ENROLL FAILED ID " + String(id));
+  }
+
+  delay(1500);
+}
+
+// ================= DELETE =================
+void deleteFingerprint() {
+  lcd.clear();
+  printCenter(1, "Delete ID (# confirm)");
+  String idStr = "";
+
+  while (true) {
+    currentKey = keypad.getKey();
+    if (currentKey) {
+      if (currentKey == '#') break;
+      if (currentKey == '*') {
+        if (idStr.length() > 0) {
+          idStr.remove(idStr.length() - 1);
+          lcd.setCursor(idStr.length(), 2);
+          lcd.print(" ");
+          lcd.setCursor(idStr.length(), 2);
+        }
+      } else if (currentKey >= '0' && currentKey <= '9') {
+        if (idStr.length() < 3) {
+          idStr += currentKey;
+          lcd.setCursor(idStr.length() - 1, 2);
+          lcd.print("*");
+        }
+      }
+    }
+  }
+
+  int id = idStr.toInt();
+  if (id < 1 || id > 127) {
+    lcd.clear();
+    printCenter(1, "Invalid ID");
+    printCenter(2, "Use 1-127");
+    delay(1500);
+    return;
+  }
+
+  if (finger.deleteModel(id) == FINGERPRINT_OK) {
+    lcd.clear();
+    printCenter(1, "Deleted ID: " + String(id));
+    sendSMS("DELETE SUCCESS ID " + String(id));
+  } else {
+    lcd.clear();
+    printCenter(1, "Delete Failed");
+    sendSMS("DELETE FAILED ID " + String(id));
+  }
+
+  delay(1500);
+}
+

@@ -42,7 +42,7 @@ export default function ReferenceSection() {
         </p>
 
         {/* 3 columns grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {references.map((ref, i) => (
             <div
               key={i}

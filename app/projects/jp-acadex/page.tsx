@@ -34,15 +34,15 @@ function HeroSection() {
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Acadex</h1>
 
           <p className="text-gray-600">
-            Acadex is a microservices-based web platform for managing
-            programming assignments with built-in code compilation. It enables
-            students to write and submit code, while professors can review,
-            grade, and manage academic workflows efficiently.
+            Acadex is a web platform for managing programming assignments with
+            built-in code compilation. It enables students to write and submit
+            code, while professors can review, grade, and manage academic
+            workflows efficiently.
           </p>
 
           <p className="text-gray-500 mt-2 italic text-sm">
-            Designed with scalability and performance in mind using event-driven
-            architecture, caching, and system monitoring.
+            Built as a monolithic full-stack application using Next.js and
+            Spring Boot, focusing on performance and maintainability.
           </p>
 
           <div className="mt-6">
@@ -71,7 +71,7 @@ function HeroSection() {
 
         <div className="relative w-full h-[250px] md:h-[300px]">
           <Image
-            src="/images/no-image.png"
+            src="/images/projects/images/pj-2.png"
             fill
             sizes="512px"
             alt="Acadex"
@@ -86,11 +86,11 @@ function HeroSection() {
 function DetailsSection() {
   const techStack = {
     Frontend: ["Next.js"],
-    Backend: ["Java", "Spring Boot", "Microservices"],
+    Backend: ["Java", "Spring Boot"],
     Database: ["PostgreSQL"],
     Security: ["Spring Security", "JWT Authentication"],
     DevOps: ["Prometheus", "Grafana"],
-    Messaging: ["Kafka"],
+    Messaging: [],
     Caching: ["Redis"],
     Tools: ["Git"],
     Payment: [],
@@ -107,10 +107,10 @@ function DetailsSection() {
         </h2>
 
         <p className="text-gray-600 mb-6">
-          Acadex follows a microservices architecture where services are
-          independently deployed and communicate through APIs and event-driven
-          messaging. Kafka is used for asynchronous communication, while Redis
-          improves performance through caching frequently accessed data.
+          Acadex is a monolithic full-stack web application built using Next.js
+          for the frontend and Spring Boot for the backend. It provides a
+          centralized system for managing programming assignments, submissions,
+          and grading workflows in an academic environment.
         </p>
 
         <h3 className="text-xl font-semibold mb-3">─── ✦ Key Features ✦ ───</h3>
@@ -119,11 +119,9 @@ function DetailsSection() {
           <li>Online code editor with compilation support</li>
           <li>Assignment submission and tracking system</li>
           <li>Professor dashboard for grading and review</li>
-          <li>Microservices-based scalable architecture</li>
-          <li>Event-driven communication using Kafka</li>
+          <li>Secure authentication and role-based access control</li>
           <li>Redis caching for performance optimization</li>
           <li>System monitoring using Prometheus and Grafana</li>
-          <li>Secure authentication and role-based access</li>
         </ul>
       </div>
 
@@ -133,13 +131,12 @@ function DetailsSection() {
 
         <div className="space-y-3 mb-6">
           {Object.entries(techStack)
-            .filter(([_, items]) => items.length > 0) // 👈 skip empty categories
+            .filter(([_, items]) => items.length > 0)
             .map(([category, items]) => (
               <div
                 key={category}
                 className="shadow-md rounded-lg overflow-hidden"
               >
-                {/* Header */}
                 <button
                   onClick={() =>
                     setOpenCategory(openCategory === category ? null : category)
@@ -150,7 +147,6 @@ function DetailsSection() {
                   <span>{openCategory === category ? "−" : "+"}</span>
                 </button>
 
-                {/* Content */}
                 {openCategory === category && (
                   <div className="flex flex-wrap gap-2 p-3 bg-white">
                     {items.map((tech) => (
@@ -184,7 +180,7 @@ function DetailsSection() {
 
           <div className="flex justify-between">
             <span className="font-medium">Architecture:</span>
-            <span>Microservices</span>
+            <span>Monolithic</span>
           </div>
 
           <div className="flex justify-between items-center">

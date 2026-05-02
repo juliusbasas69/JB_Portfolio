@@ -77,7 +77,7 @@ function HeroSection() {
         {/* Right Image */}
         <div className="relative w-full h-[250px] md:h-[300px]">
           <Image
-            src="/images/projects/futurepath/jp-futurepath.png"
+            src="/images/projects/images/pj-5.png"
             fill
             sizes="512px"
             preload={true}

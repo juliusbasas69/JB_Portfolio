@@ -12,6 +12,7 @@ export default function HeroSection() {
     { name: "Go", top: "30%", left: "40%", size: "1.7rem" },
     { name: "Swift", top: "50%", left: "10%", size: "1.6rem" },
     { name: "Kotlin", top: "80%", left: "75%", size: "2rem" },
+    { name: "IoT", top: "25%", left: "55%", size: "1.8rem" },
   ];
 
   return (
@@ -79,8 +80,8 @@ export default function HeroSection() {
         {/* Floating Bottom Cards */}
         <div
           className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
-             flex flex-wrap justify-center gap-4 bg-white shadow-xl rounded-2xl
-             px-4 py-3 md:px-8 md:py-5 w-fit max-w-[75%]"
+            flex flex-nowrap justify-center gap-4 bg-white shadow-xl rounded-2xl
+            px-4 py-3 md:px-8 md:py-5 w-fit max-w-[90%] overflow-x-auto"
         >
           {/* Web Dev */}
           <div className="flex items-center gap-3">
@@ -130,6 +131,17 @@ export default function HeroSection() {
                 Game Development
               </p>
               <p className="font-semibold text-gray-800">-</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-orange-500 text-white flex items-center justify-center rounded-full">
+              📡
+            </div>
+            <div>
+              <p className="text-sm text-gray-500 text-xs whitespace-nowrap">
+                IoT Development
+              </p>
+              <p className="font-semibold text-gray-800">2</p>
             </div>
           </div>
         </div>
