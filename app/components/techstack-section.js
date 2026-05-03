@@ -233,44 +233,57 @@ export default function TechStackSection() {
       : techStacks.filter((tech) => tech.category === activeCategory);
 
   return (
-    <section className="w-full py-6 px-6">
+    <section className="w-full py-10 sm:py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
+        {/* Title */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 md:mb-8 text-center">
           My Tech Stacks
         </h2>
 
-        {/* Category Tabs */}
-        <div className="flex justify-center gap-4 mb-6 flex-wrap">
+        {/* Tabs */}
+        <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 mb-6 flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`px-4 py-2 rounded-full font-medium transition duration-300 cursor-pointer
-                ${
-                  activeCategory === cat
-                    ? "bg-btn text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-blue-200"
-                }`}
               onClick={() => setActiveCategory(cat)}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium transition text-xs sm:text-sm md:text-base
+              ${
+                activeCategory === cat
+                  ? "bg-btn text-white"
+                  : "bg-gray-200 text-gray-700 hover:bg-blue-200"
+              }`}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        <div className="flex justify-center gap-6 mb-8 flex-wrap text-sm text-gray-500">
-          <div className="flex items-center gap-2">
+        {/* Legend */}
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 mb-8 text-xs sm:text-sm text-gray-500 text-center">
+          <div className="flex items-center justify-center gap-2">
             <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
             <span>With year — Used in actual work</span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <span className="w-3 h-3 border-2 border-gray-400 rounded-full"></span>
             <span>No year — Used but not in actual work</span>
           </div>
         </div>
 
-        {/* Tech Stack Display */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-8 justify-items-center">
+        {/* Grid */}
+        <div
+          className="
+          grid
+          grid-cols-3
+          sm:grid-cols-4
+          md:grid-cols-5
+          lg:grid-cols-6
+          xl:grid-cols-7
+          gap-5 sm:gap-6 md:gap-8
+          justify-items-center
+        "
+        >
           {filteredStacks.map((tech, index) => (
             <div
               key={index}
@@ -278,13 +291,13 @@ export default function TechStackSection() {
             >
               {/* Year Badge */}
               {tech.years && (
-                <div className="absolute -top-2 -right-2 bg-btn text-white text-xs px-2 py-1 rounded-full shadow z-10">
+                <div className="absolute -top-2 -right-2 bg-btn text-white text-[10px] sm:text-xs px-2 py-1 rounded-full shadow z-10">
                   {tech.years}
                 </div>
               )}
 
               {/* Logo */}
-              <div className="relative w-24 h-24">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
                 <Image
                   src="/images/circle-bg.png"
                   alt="circle background"
@@ -292,7 +305,7 @@ export default function TechStackSection() {
                   className="object-contain"
                 />
 
-                <div className="absolute inset-0 flex items-center justify-center p-4">
+                <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-3 md:p-4">
                   <Image
                     src={tech.logo}
                     alt={tech.name}
@@ -304,7 +317,7 @@ export default function TechStackSection() {
               </div>
 
               {/* Title */}
-              <span className="text-gray-800 font-medium text-center">
+              <span className="text-gray-800 font-medium text-center text-xs sm:text-sm md:text-base">
                 {tech.name}
               </span>
             </div>

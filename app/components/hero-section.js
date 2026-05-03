@@ -16,7 +16,8 @@ export default function HeroSection() {
   ];
 
   return (
-    <div className="w-full bg-sky-50 relative relative ">
+    <div className="w-full bg-sky-50 relative">
+      {/* Floating Text */}
       {languages.map((lang, index) => (
         <span
           key={index}
@@ -25,126 +26,136 @@ export default function HeroSection() {
             top: lang.top,
             left: lang.left,
             fontSize: lang.size,
-            transform: "translate(-50%, -50%) rotate(0deg)", // centers the text
-            opacity: 0.3, // visible but subtle
+            transform: "translate(-50%, -50%)",
+            opacity: 0.25,
             pointerEvents: "none",
             whiteSpace: "nowrap",
             zIndex: 1,
           }}
-          className="text-gray-400 select-none z-0"
+          className="text-gray-400 select-none"
         >
           {lang.name}
         </span>
       ))}
 
-      <section className="max-w-7xl w-full m-auto py-20 px-6">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="max-w-7xl w-full m-auto pt-14 md:pt-20 pb-40 md:pb-52 px-4 sm:px-6 relative">
+        <div className="max-w-5xl mx-auto text-center relative z-10">
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight">
             Design That Works. <br />
             <span className="text-blue-500">Results That Matter.</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-gray-400 text-lg mb-8">
+          <p className="text-gray-400 text-base md:text-lg mb-8 max-w-2xl mx-auto">
             Bring your ideas to life with clean, functional, and modern design.
           </p>
 
           {/* Buttons */}
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
             <Link
               href="#project"
-              className="bg-btn hover:bg-blue-700 text-white px-6 py-3 rounded-full duration-300 hover:scale-105 transition"
+              className="bg-btn hover:bg-blue-700 text-white py-3 px-6 rounded-full duration-300 hover:scale-105 transition text-center w-56"
             >
               Explore My Projects
             </Link>
 
             <Link
               href="#contact"
-              className="border border-blue-500 text-sky-500 h px-6 py-3 rounded-full hover:scale-105 transition duration-300"
+              className="border border-blue-500 text-sky-500 py-3 px-6 rounded-full hover:scale-105 transition duration-300 text-center w-56"
             >
               Contact Me
             </Link>
           </div>
-          <div className="relative">
-            <Image
-              src="/images/welcome-robot.png"
-              alt="Robot"
-              width={512}
-              height={512}
-              preload={true}
-              className="absolute -bottom-30 -left-12 w-8 h-88 md:w-60 lg:w-80 z-0 pointer-events-none"
-            />
-          </div>
         </div>
-        {/* Floating Bottom Cards */}
+
+        {/* Floating Card */}
+        {/* Floating Card */}
+        {/* Floating Card */}
         <div
-          className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2
-            flex flex-nowrap justify-center gap-4 bg-white shadow-xl rounded-2xl
-            px-4 py-3 md:px-8 md:py-5 w-fit max-w-[90%] overflow-x-auto"
+          className="absolute left-1/2 bottom-8 -translate-x-1/2
+  bg-white shadow-xl rounded-2xl px-4 py-4 md:px-6 md:py-5
+  w-[95%] max-w-[1100px] z-30 overflow-x-auto"
         >
-          {/* Web Dev */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-full">
-              🌐
+          <div className="flex flex-nowrap gap-6">
+            <div className="flex items-center gap-3 min-w-[180px]">
+              <div className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-full">
+                🌐
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 whitespace-nowrap">
+                  Web Development
+                </p>
+                <p className="font-semibold text-gray-800">6</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-gray-500 text-xs whitespace-nowrap">
-                Web Development
-              </p>
-              <p className="font-semibold text-gray-800">6</p>
-            </div>
-          </div>
 
-          {/* Android Dev */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full">
-              🤖
+            <div className="flex items-center gap-3 min-w-[180px]">
+              <div className="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full">
+                🤖
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 whitespace-nowrap">
+                  Android Development
+                </p>
+                <p className="font-semibold text-gray-800">-</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-gray-500 text-xs whitespace-nowrap whitespace-nowrap">
-                Android Development
-              </p>
-              <p className="font-semibold text-gray-800">-</p>
-            </div>
-          </div>
 
-          {/* iOS Dev */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gray-800 text-white flex items-center justify-center rounded-full">
-              🍎
+            <div className="flex items-center gap-3 min-w-[180px]">
+              <div className="w-10 h-10 bg-gray-800 text-white flex items-center justify-center rounded-full">
+                🍎
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 whitespace-nowrap">
+                  iOS Development
+                </p>
+                <p className="font-semibold text-gray-800">-</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-gray-500 text-xs whitespace-nowrap">
-                iOS Development
-              </p>
-              <p className="font-semibold text-gray-800">-</p>
-            </div>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-500 text-white flex items-center justify-center rounded-full">
-              🎮
+            <div className="flex items-center gap-3 min-w-[180px]">
+              <div className="w-10 h-10 bg-purple-500 text-white flex items-center justify-center rounded-full">
+                🎮
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 whitespace-nowrap">
+                  Game Development
+                </p>
+                <p className="font-semibold text-gray-800">-</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-gray-500 text-xs whitespace-nowrap">
-                Game Development
-              </p>
-              <p className="font-semibold text-gray-800">-</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-orange-500 text-white flex items-center justify-center rounded-full">
-              📡
-            </div>
-            <div>
-              <p className="text-sm text-gray-500 text-xs whitespace-nowrap">
-                IoT Development
-              </p>
-              <p className="font-semibold text-gray-800">2</p>
+
+            <div className="flex items-center gap-3 min-w-[180px]">
+              <div className="w-10 h-10 bg-orange-500 text-white flex items-center justify-center rounded-full">
+                📡
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 whitespace-nowrap">
+                  IoT Development
+                </p>
+                <p className="font-semibold text-gray-800">2</p>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Robot Fully Visible */}
+        <Image
+          src="/images/welcome-robot.png"
+          alt="Robot"
+          width={512}
+          height={512}
+          priority
+          className="
+    absolute bottom-22 -left-1
+    sm:bottom-16 sm:left-1
+    md:bottom-20 md:left-1
+    lg:bottom-18 lg:left-1
+    w-28 sm:w-32 md:w-44 lg:w-60
+    h-auto z-20 pointer-events-none
+  "
+        />
       </section>
     </div>
   );

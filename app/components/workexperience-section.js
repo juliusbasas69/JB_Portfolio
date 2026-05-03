@@ -114,54 +114,68 @@ export default function ExperienceSection() {
   };
 
   return (
-    <section className="mt-10 w-full py-16 px-6 bg-gradient-to-r from-white to-[#F0F9FF]">
+    <section className="mt-10 w-full py-12 sm:py-16 px-3 sm:px-6 bg-gradient-to-r from-white to-[#F0F9FF] overflow-x-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 sm:mb-12">
           Work Experience
         </h2>
 
-        <div className="flex flex-col items-center w-200">
-          <div className="space-y-6 w-full">
-            <h3 className="text-xl font-semibold mb-4">Work Experience</h3>
+        <div className="flex flex-col items-center w-full">
+          <div className="space-y-6 w-full max-w-4xl">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">
+              Work Experience
+            </h3>
+
             {workExperience.map((work, i) => (
               <div key={i} className="w-full">
-                <div className="flex flex-row items-center">
-                  <div className="relative w-24 h-24">
+                {/* HEADER CARD */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+                  {/* Avatar */}
+                  <div className="relative w-16 h-16 sm:w-24 sm:h-24 mx-auto sm:mx-0 hidden sm:block">
                     <Image
-                      src={work.avatar ?? "/images/no-image.png"} // Make sure this path is correct in /public/images/
+                      src={work.avatar ?? "/images/no-image.png"}
                       alt="Robot"
                       fill
                       className="object-contain"
                     />
                   </div>
-                  <div className="flex flex-row gap-5 items-center w-full">
-                    <div className="flex items-center gap-4 p-1 bg-gray-50 rounded-lg shadow-md w-full box bg-white">
-                      <div className="w-24 h-24 bg-white flex items-center justify-center relative">
+
+                  {/* Main Card */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center w-full">
+                    <div className="flex items-center gap-3 sm:gap-4 p-3 bg-white rounded-lg shadow-md w-full relative">
+                      {/* Logo */}
+                      <div className="w-16 h-16 sm:w-24 sm:h-24 relative flex items-center justify-center">
                         <Image
                           src={work.logo ?? "/images/no-image.png"}
                           alt={work.company}
                           fill
-                          sizes="256px"
                           className="object-contain"
                         />
                       </div>
 
-                      <div class="py-3">
-                        <p className="text-xs text-gray-400">{work.month}</p>
-                        <h4 className="text-lg font-semibold text-gray-800">
+                      {/* Text */}
+                      <div className="py-2 sm:py-3 min-w-0">
+                        <p className="text-[10px] sm:text-xs text-gray-400">
+                          {work.month}
+                        </p>
+                        <h4 className="text-base sm:text-lg font-semibold text-gray-800 break-words">
                           {work.title}
                         </h4>
-                        <p className="text-sm text-gray-500">{work.company}</p>
+                        <p className="text-xs sm:text-sm text-gray-500">
+                          {work.company}
+                        </p>
                       </div>
 
-                      <div className="ribbon ribbon-top-right">
+                      {/* Ribbon */}
+                      <div className="ribbon ribbon-top-right scale-90 sm:scale-100">
                         <span>{work.duration}</span>
                       </div>
                     </div>
 
+                    {/* Toggle Button */}
                     <button
                       onClick={() => toggle(i)}
-                      className="w-10 h-10 m-3 flex items-center justify-center rounded-full bg-btn text-white shadow-md hover:scale-105 transition cursor-pointer"
+                      className="w-9 h-9 sm:w-10 sm:h-10 mx-auto sm:m-3 flex items-center justify-center rounded-full bg-btn text-white shadow-md hover:scale-105 transition"
                     >
                       <ArrowDown
                         size={18}
@@ -173,32 +187,32 @@ export default function ExperienceSection() {
                   </div>
                 </div>
 
+                {/* EXPANDED SECTION */}
                 {openIndex === i && (
-                  <div className="mt-3 p-4 bg-white border border-gray-300 shadow-md rounded-lg shadow-sm animate-fadeIn flex flex-col gap-4">
-                    <div className="relative w-16 h-16">
+                  <div className="mt-3 p-4 bg-white border border-gray-300 rounded-lg shadow-md flex flex-col gap-4">
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16">
                       <Image
-                        src="/images/robot_2.png" // Make sure this path is correct in /public/images/
+                        src="/images/robot_2.png"
                         alt="Robot"
                         fill
                         className="object-contain"
                       />
                     </div>
-                    {/* Role / Title */}
-                    <h4 className="text-lg font-semibold text-gray-800">
+
+                    <h4 className="text-base sm:text-lg font-semibold text-gray-800">
                       {work.role}
                     </h4>
 
-                    {/* Details */}
                     <p className="text-sm text-gray-600">
                       {work.responsibility}
                     </p>
 
-                    {/* Tech Stack badges */}
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2">
                       {work.techstack.split(", ").map((tech, idx) => (
                         <span
                           key={idx}
-                          className="bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full"
+                          className="bg-blue-100 text-blue-700 text-[10px] sm:text-xs px-2 py-1 rounded-full"
                         >
                           {tech}
                         </span>
@@ -206,46 +220,34 @@ export default function ExperienceSection() {
                     </div>
 
                     {/* Contributions */}
-                    {work.contributions?.length > 0 && (
-                      <div className="mt-2">
-                        <h5 className="text-sm font-semibold text-gray-700">
-                          Contributions:
-                        </h5>
-                        <ul className="list-disc list-inside text-gray-600 text-sm">
-                          {work.contributions.map((item, idx) => (
-                            <li key={idx}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    <div>
+                      <h5 className="text-sm font-semibold">Contributions:</h5>
+                      <ul className="list-disc list-inside text-sm text-gray-600">
+                        {work.contributions.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
 
                     {/* Learned */}
-                    {work.learned?.length > 0 && (
-                      <div className="mt-2">
-                        <h5 className="text-sm font-semibold text-gray-700">
-                          Learned:
-                        </h5>
-                        <ul className="list-disc list-inside text-gray-600 text-sm">
-                          {work.learned.map((item, idx) => (
-                            <li key={idx}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    <div>
+                      <h5 className="text-sm font-semibold">Learned:</h5>
+                      <ul className="list-disc list-inside text-sm text-gray-600">
+                        {work.learned.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
 
                     {/* Projects */}
-                    {work.projects?.length > 0 && (
-                      <div className="mt-2">
-                        <h5 className="text-sm font-semibold text-gray-700">
-                          Projects:
-                        </h5>
-                        <ul className="list-disc list-inside text-gray-600 text-sm">
-                          {work.projects.map((item, idx) => (
-                            <li key={idx}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    <div>
+                      <h5 className="text-sm font-semibold">Projects:</h5>
+                      <ul className="list-disc list-inside text-sm text-gray-600">
+                        {work.projects.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
               </div>

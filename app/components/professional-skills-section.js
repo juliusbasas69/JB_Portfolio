@@ -5,17 +5,10 @@ import { useState } from "react";
 export default function ProfessionalSkillsSection() {
   const skills = [
     {
-      name: "Microservices",
+      name: "Microservices Architecture",
       category: "Architecture",
       level: "Intermediate",
-      tools: [
-        "Spring Boot",
-        "REST API",
-        "Docker",
-        "Kafka",
-        "Redis",
-        "Spring Session",
-      ],
+      tools: ["Spring Boot", "Docker", "Kafka", "Redis", "Spring Session"],
     },
     {
       name: "Web Development",
@@ -24,40 +17,22 @@ export default function ProfessionalSkillsSection() {
       tools: ["React", "Next.js", "Thymeleaf", "HTML", "CSS", "JavaScript"],
     },
     {
-      name: "Testing",
-      category: "Quality",
-      level: "Intermediate",
-      tools: ["JUnit", "Postman", "Manual Testing"],
-    },
-    {
-      name: "Technical Documentation",
-      category: "Process",
-      level: "Intermediate",
-      tools: ["Swagger/OpenAPI", "Markdown", "API Specs"],
-    },
-    {
-      name: "UI / Screen Documentation",
-      category: "Process",
-      level: "Intermediate",
-      tools: ["UI Flows", "Feature Guides", "Screenshots"],
-    },
-    {
       name: "REST API Design",
       category: "Backend",
       level: "Advanced",
-      tools: ["Spring Boot", "Node.js", "Express", "HTTP Standards"],
+      tools: ["REST Principles", "HTTP Methods", "Status Codes", "API Design"],
     },
     {
       name: "System Design",
       category: "Architecture",
       level: "Intermediate",
-      tools: ["Scalability Patterns", "Load Balancing", "Caching Concepts"],
+      tools: ["Scalability", "Load Balancing", "Caching Strategies"],
     },
     {
-      name: "Agile / Scrum",
-      category: "Process",
+      name: "Testing",
+      category: "Quality",
       level: "Intermediate",
-      tools: ["Sprint Planning", "Jira", "Standups"],
+      tools: ["JUnit", "Postman", "Manual Testing"],
     },
     {
       name: "Code Review",
@@ -69,7 +44,7 @@ export default function ProfessionalSkillsSection() {
       name: "Debugging",
       category: "Development",
       level: "Advanced",
-      tools: ["DevTools", "Logs Analysis", "Breakpoints"],
+      tools: ["DevTools", "Logging", "Breakpoints"],
     },
     {
       name: "CI/CD",
@@ -78,27 +53,34 @@ export default function ProfessionalSkillsSection() {
       tools: ["GitHub Actions", "Automated Build & Deploy"],
     },
     {
-      name: "Monitoring",
+      name: "Monitoring & Observability",
       category: "DevOps",
       level: "Beginner",
-      tools: [
-        "Prometheus",
-        "Grafana",
-        "Logging",
-        "Basic Observability Concepts",
-      ],
+      tools: ["Prometheus", "Grafana", "Logging"],
     },
     {
-      name: "Swagger / OpenAPI",
-      category: "Quality",
+      name: "Technical Documentation",
+      category: "Process",
       level: "Intermediate",
-      tools: ["API Documentation", "Endpoint Testing"],
+      tools: ["Swagger / OpenAPI", "API Documentation", "Markdown"],
+    },
+    {
+      name: "UI / UX Documentation",
+      category: "Process",
+      level: "Intermediate",
+      tools: ["UI Flows", "Wireframes", "Feature Guides"],
+    },
+    {
+      name: "Agile / Scrum",
+      category: "Process",
+      level: "Intermediate",
+      tools: ["Sprint Planning", "Jira", "Standups"],
     },
     {
       name: "Figma",
       category: "Process",
       level: "Intermediate",
-      tools: ["UI Design", "Wireframes", "Prototypes"],
+      tools: ["UI Design", "Wireframes", "Prototyping"],
     },
     {
       name: "Caching",
@@ -110,12 +92,7 @@ export default function ProfessionalSkillsSection() {
       name: "Authentication & Security",
       category: "Backend",
       level: "Intermediate",
-      tools: [
-        "JWT Authentication",
-        "Spring Security",
-        "Role-Based Access Control (RBAC)",
-        "API Security",
-      ],
+      tools: ["JWT", "Spring Security", "RBAC", "API Security"],
     },
   ];
 
@@ -137,38 +114,41 @@ export default function ProfessionalSkillsSection() {
       : skills.filter((skill) => skill.category === activeCategory);
 
   return (
-    <section className="w-full py-6 px-6">
+    <section className="w-full py-10 sm:py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
+        {/* Title */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 md:mb-8 text-center">
           Professional Skills
         </h2>
 
-        {/* Category Tabs */}
-        <div className="flex justify-center gap-4 mb-8 flex-wrap">
+        {/* Tabs */}
+        <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 mb-6 md:mb-8 flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`px-4 py-2 rounded-full font-medium transition cursor-pointer
+              onClick={() => setActiveCategory(cat)}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium transition text-xs sm:text-sm md:text-base
               ${
                 activeCategory === cat
                   ? "bg-btn text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-blue-200"
               }`}
-              onClick={() => setActiveCategory(cat)}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           {filteredSkills.map((skill, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition"
+              className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 shadow-sm hover:shadow-md transition"
             >
-              <h3 className="font-semibold text-gray-800 mb-2">{skill.name}</h3>
+              <h3 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">
+                {skill.name}
+              </h3>
 
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-500">{skill.category}</span>
@@ -178,7 +158,7 @@ export default function ProfessionalSkillsSection() {
                 </span>
               </div>
 
-              <div className="text-xs text-gray-500 mt-2">
+              <div className="text-xs text-gray-500 mt-2 leading-relaxed">
                 {skill.tools?.join(", ")}
               </div>
             </div>

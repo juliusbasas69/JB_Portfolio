@@ -85,6 +85,17 @@ body {
   transform: rotate(45deg);
 }
 
+@media (max-width: 640px) {
+  .ribbon {
+    transform: scale(0.85);
+  }
+
+  .ribbon-top-right {
+    top: -16px;
+    right: -16px;
+  }
+}
+
 .card .banner {
   position: absolute;
   width: fit-content;
