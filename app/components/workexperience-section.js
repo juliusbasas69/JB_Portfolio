@@ -9,7 +9,7 @@ export default function ExperienceSection() {
     {
       avatar: "/images/robot-freelance.png",
       logo: "/images/logo/freelancer.png",
-      title: "Freelance Full Stack Developer",
+      title: "Freelance - Full Stack Developer",
       company: "Self-Employed",
       month: "Present",
       duration: "Ongoing",
@@ -32,11 +32,11 @@ export default function ExperienceSection() {
     {
       avatar: "/images/robot-student.png",
       logo: "/images/logo/alliance.png",
-      title: "Student Trainee",
+      title: "Intern - Full Stack Developer",
       company: "Alliance Software Inc.",
       month: "Feb 2024 - Jun 2024",
       duration: "4 Months",
-      role: "Student Trainee",
+      role: "Intern - Full Stack Developer",
       responsibility: "Assist in web application development and testing.",
       techstack: "ASP.NET MVC, C#, Microsoft SQL",
       contributions: [
@@ -55,11 +55,11 @@ export default function ExperienceSection() {
     {
       avatar: "/images/robot-intern.png",
       logo: "/images/logo/fullscale.png",
-      title: "Intern | Full Stack Developer",
+      title: "Intern - Full Stack Developer",
       company: "Fullscale Inc.",
       month: "Feb 2025 - Jun 2025",
       duration: "4 Months",
-      role: "Intern Developer",
+      role: "Intern - Full Stack Developer",
       responsibility:
         "Support full-stack development projects and complete assigned tasks.",
       techstack: "Next.js, C#, ASP.NET, Microsoft SQL",
@@ -80,7 +80,7 @@ export default function ExperienceSection() {
     {
       avatar: "/images/robot-developer.png",
       logo: "/images/logo/bridgeculture.png",
-      title: "Full Stack Developer",
+      title: "Java - Full Stack Developer",
       company: "BridgeCulture Inc.",
       month: "Feb 2023 - Feb 2026",
       duration: "3 Years",
@@ -104,6 +104,20 @@ export default function ExperienceSection() {
         "Supported team development through collaboration and mentoring on workflows and implementation practices",
       ],
       projects: ["Preschool Project", "BC Workflow (Live)", "Cyzennt Workflow"],
+    },
+    {
+      avatar: "/images/robot-developer.png",
+      logo: "/images/logo/osidigital.png",
+      title: "Java - Software Engineer",
+      company: "OSI Digital",
+      month: "Feb 2026 - Present",
+      duration: "Current",
+      role: "Software Engineer",
+      responsibility: "",
+      techstack: "",
+      contributions: [],
+      learned: [],
+      projects: [],
     },
   ];
 

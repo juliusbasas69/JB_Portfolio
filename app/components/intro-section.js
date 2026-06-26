@@ -44,7 +44,7 @@ export default function IntroSection() {
 
             <div className="inline-flex items-center bg-green-100 text-green-600 font-semibold px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm">
               <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-              Open for Work
+              Employed
             </div>
           </div>
 
